@@ -1,7 +1,16 @@
 import './index.scss';
+import '@pages/home';
 
+import { Header } from '@components/header';
+import { useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC } from 'react';
 
 export const App: FC = () => {
-  return <h1 className='test'>Currency Tracker</h1>;
+  const { theme } = useSelectorTyped((store) => store.app);
+
+  return (
+    <div className={`app ${theme}`}>
+      <Header />
+    </div>
+  );
 };

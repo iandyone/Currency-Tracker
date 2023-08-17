@@ -1,2 +1,25 @@
-$black: #030304;
-$white: #d9d9d9;
+:root {
+  --Popins: 'Popins sans-serif';
+  --black: #030304;
+  --white: #fff;
+  --white2: #d9d9d9;
+  --green: #00bc4f;
+  --transition: all 0.3s ease;
+  --buttonPressedTransform: scale(0.95);
+}
+
+.app.dark {
+  --bg: var(--black);
+
+  --navLinkColor: var(--white);
+  --switcherBorder: var(--white);
+  --togglerBorder: var(--white);
+}
+
+.app.light {
+  --bg: var(--white2);
+
+  --navLinkColor: var(--black);
+  --switcherBorder: var(--green);
+  --togglerBorder: var(--green);
+}

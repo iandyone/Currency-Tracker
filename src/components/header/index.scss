@@ -1,0 +1,80 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.header {
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0px;
+  }
+
+  &__logo {
+    @extend %buttonHover;
+    @extend %buttonActive;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 115px;
+    font-size: 20px;
+
+    @media (max-width: 992px) {
+      column-gap: 55px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      column-gap: 30px;
+    }
+
+    @media (max-width: 500px) {
+      column-gap: 16px;
+    }
+  }
+
+  &__link {
+    color: var(--navLinkColor);
+    font-weight: 300;
+    line-height: calc(40 / 20 * 100%);
+    user-select: none;
+
+    @extend %buttonHover;
+    @extend %buttonActive;
+  }
+}
+
+.theme {
+  &__switcher {
+    width: 50px;
+    height: 28px;
+    background-color: transparent;
+    border: 2px solid var(--switcherBorder);
+    border-radius: 28px;
+    position: relative;
+    transition: var(--transition);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__toggler {
+    width: 27px;
+    height: 27px;
+    border: 2px solid var(--togglerBorder);
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: -1px;
+    transform: translateX(0px);
+    transition: var(--transition);
+
+    &.light {
+      transform: translateX(21px);
+      transition: var(--transition);
+    }
+  }
+}

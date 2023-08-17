@@ -1,1 +1,28 @@
 @import './variables.scss';
+
+%pagePagging {
+  padding: 0 15px;
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
+}
+
+%buttonHover {
+  transition: var(--transition);
+
+  &:hover {
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0.6;
+  }
+}
+
+%buttonActive {
+  transition: var(--transition);
+
+  &:active {
+    transition: var(--transition);
+    transform: var(--buttonPressedTransform);
+  }
+}
