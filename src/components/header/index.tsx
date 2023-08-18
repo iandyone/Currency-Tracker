@@ -5,10 +5,11 @@ import { INavLink, IThemeButtonProps } from '@constants/types';
 import { toggleAppTheme } from '@store/reducers/app-reducer';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header: FC = () => {
   const pagesList: INavLink[] = [
-    { name: 'Home', route: '/home' },
+    { name: 'Home', route: '/' },
     { name: 'Timeline', route: '/timeline' },
     { name: 'Bank card', route: '/card' },
     { name: 'Contacts', route: '/contacts' },
@@ -18,9 +19,9 @@ export const Header: FC = () => {
     <header className='header'>
       <div className='header__container container'>
         <nav className='header__navigation'>
-          <a href='/' className='header__logo'>
+          <Link to='/' className='header__logo'>
             <img src={Logo} alt='header-logo' />
-          </a>
+          </Link>
           <ul className='header__links'>
             {pagesList.map((pageLink) => (
               <NavLink {...pageLink} key={pageLink.name} />
@@ -58,7 +59,7 @@ const ThemeButton: FC<IThemeButtonProps> = ({ className }) => {
 export const NavLink: FC<INavLink> = ({ name, route }) => {
   return (
     <li className='header__link'>
-      <a href={route}>{name}</a>
+      <Link to={route}>{name}</Link>
     </li>
   );
 };

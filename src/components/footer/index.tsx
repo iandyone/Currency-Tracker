@@ -2,6 +2,7 @@ import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
 import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface IFooterLink {
   name: string;
@@ -81,7 +82,7 @@ const LinksColumn: FC<IFooterColumn> = ({ column, links }) => {
         {links.map(({ name, route }) => {
           return (
             <li className='navigation__link' key={name}>
-              <a href={route}>{name}</a>
+              <Link to={route}>{name}</Link>
             </li>
           );
         })}

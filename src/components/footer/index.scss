@@ -115,10 +115,7 @@
 
       &.active {
         .navigation__links {
-          transition: var(--transition);
-          font-size: 20px;
           height: 70px;
-          padding-top: 10px;
         }
 
         .navigation__title {
@@ -142,7 +139,6 @@
     @media (max-width: 600px) {
       font-size: 20px;
       font-weight: 400;
-      line-height: 150%;
       letter-spacing: -0.24px;
       margin-bottom: 0px;
 
@@ -168,7 +164,7 @@
     font-weight: 400;
     row-gap: 18px;
     color: var(--footer-links);
-    transition: var(--transition);
+    transition: height 0.3s ease;
 
     @media (max-width: 600px) {
       height: 0px;
@@ -178,7 +174,6 @@
 
   &__link {
     & a {
-      display: inline-block;
       @extend %buttonHover;
       @extend %buttonActive;
 

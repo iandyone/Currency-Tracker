@@ -3,12 +3,12 @@ import './index.scss';
 import { Banner } from '@components/banner';
 import { FC } from 'react';
 
-export const HomePage: FC = () => {
+export const CardPage: FC = () => {
   return (
-    <section className='home'>
-      <div className='home__container container'>
+    <section className='card'>
+      <div className='card__container container'>
         <Banner />
-        <h1>Home page</h1>
+        <h1>Card page</h1>
       </div>
     </section>
   );
