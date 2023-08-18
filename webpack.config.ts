@@ -25,7 +25,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     alias: alias,
     isDev: mode === 'development',
     paths: {
-      favicon: path.resolve(__dirname, 'src', 'assets', 'favicon.ico'),
+      favicon: path.resolve(__dirname, 'src', 'assets', 'icons', 'favicon.ico'),
       html: path.resolve(__dirname, 'public', 'index.html'),
       entry: path.resolve(__dirname, 'src', 'index.tsx'),
       output: path.resolve(__dirname, 'dist'),

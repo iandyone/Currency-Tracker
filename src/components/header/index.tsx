@@ -1,6 +1,6 @@
 import './index.scss';
 
-import Logo from '@assets/header/logo.svg';
+import Logo from '@assets/icons/logo.webp';
 import { INavLink, IThemeButtonProps } from '@constants/types';
 import { toggleAppTheme } from '@store/reducers/app-reducer';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
@@ -19,7 +19,7 @@ export const Header: FC = () => {
       <div className='header__container container'>
         <nav className='header__navigation'>
           <a href='/' className='header__logo'>
-            <Logo />
+            <img src={Logo} alt='header-logo' />
           </a>
           <ul className='header__links'>
             {pagesList.map((pageLink) => (

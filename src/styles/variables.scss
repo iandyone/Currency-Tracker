@@ -1,11 +1,12 @@
 :root {
-  --Popins: 'Popins sans-serif';
+  --Poppins: 'Poppins';
   --black: #030304;
   --white: #fff;
   --white2: #d9d9d9;
-  --green: #00bc4f;
+  --green: #00ce2c;
   --transition: all 0.3s ease;
   --buttonPressedTransform: scale(0.95);
+  --text-gradient: linear-gradient(92deg, #00ce2c 0%, #aedf23 49.26%, #a3dc00 100%);
 }
 
 .app.dark {

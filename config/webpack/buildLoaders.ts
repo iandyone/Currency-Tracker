@@ -34,7 +34,7 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
   };
 
   const fileLoader = {
-    test: /\.(png|jpe?g|gif)$/i,
+    test: /\.(png|jpe?g|gif|webp)$/i,
     loader: 'file-loader',
     options: {
       name() {
