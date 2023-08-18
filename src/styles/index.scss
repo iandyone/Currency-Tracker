@@ -2,18 +2,23 @@
 @import './variables.scss';
 @import './templates.scss';
 
-%pagePagging {
-  padding: 0 10px;
-
-  @media (max-width: 480px) {
-    padding: 0 10px;
-  }
-}
-
 .container {
   max-width: 1400px;
   margin: 0px auto;
   box-sizing: content-box;
 
   @extend %pagePagging;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--white2);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--green);
+  border-radius: 8px;
 }

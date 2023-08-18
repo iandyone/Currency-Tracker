@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 %pagePagging {
-  padding: 0 15px;
+  padding: 0 25px;
 
   @media (max-width: 480px) {
     padding: 0 20px;
@@ -25,4 +25,12 @@
     transition: var(--transition);
     transform: var(--buttonPressedTransform);
   }
+}
+
+%gradientText {
+  color: transparent;
+  background: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
