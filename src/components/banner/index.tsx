@@ -1,11 +1,11 @@
 import './index.scss';
 
 import Logo from '@assets/icons//logo.webp';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
-export const Banner: FC = () => {
+const Banner: FC = () => {
   return (
-    <section className='banner'>
+    <div className='banner'>
       <div className='banner__container container'>
         <div className='banner__body'>
           <div className='banner__content'>
@@ -17,6 +17,8 @@ export const Banner: FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
+
+export default memo(Banner);

@@ -16,6 +16,7 @@ export function buildConfig(options: BuildOptions): Configuration {
     },
     output: {
       filename: '[name].[contenthash].js',
+      chunkFilename: '[name].[contenthash].js',
       path: paths.output,
       clean: true,
     },

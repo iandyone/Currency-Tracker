@@ -1,13 +1,14 @@
 import './index.scss';
 
+import { withSection } from '@utils/hocs/with-section';
 import { FC } from 'react';
 
-export const ErrorPage: FC = () => {
+const ErrorPage: FC = () => {
   return (
-    <section className='error'>
-      <div className='error__container container'>
-        <h1>Error page</h1>
-      </div>
-    </section>
+    <>
+      <h1>Error page</h1>
+    </>
   );
 };
+
+export default withSection(ErrorPage, 'error');

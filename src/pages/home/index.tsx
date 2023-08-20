@@ -1,15 +1,17 @@
 import './index.scss';
 
-import { Banner } from '@components/banner';
+import Banner from '@components/banner';
+import { Currencies } from '@components/currencies';
+import { withSection } from '@utils/hocs/with-section';
 import { FC } from 'react';
 
-export const HomePage: FC = () => {
+const HomePage: FC = () => {
   return (
-    <section className='home'>
-      <div className='home__container container'>
-        <Banner />
-        <h1>Home page</h1>
-      </div>
-    </section>
+    <>
+      <Banner />
+      <Currencies />
+    </>
   );
 };
+
+export default withSection(HomePage, 'home');

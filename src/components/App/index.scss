@@ -1,7 +1,13 @@
-.app {
+.app,
+.loader {
   min-height: 100vh;
   background-color: var(--bg);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
+}
+
+.loader {
+  justify-content: center;
+  align-items: center;
 }

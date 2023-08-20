@@ -15,5 +15,9 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
       template: paths.html,
       favicon: paths.favicon,
     }),
+    new webpack.DefinePlugin({
+      // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.WEBPACK_TEST': JSON.stringify(process.env.WEBPACK_TEST),
+    }),
   ];
 }

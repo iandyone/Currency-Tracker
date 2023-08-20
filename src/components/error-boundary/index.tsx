@@ -1,3 +1,6 @@
+import './index.scss';
+
+import { Spinner } from '@components/loader';
 import React, { ReactNode, Suspense } from 'react';
 
 interface ErrorBoundaryProps {
@@ -5,24 +8,27 @@ interface ErrorBoundaryProps {
 }
 
 interface ErrorBoundaryState {
-  hasError: boolean;
+  error: boolean | string;
 }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { error: false };
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
+  static getDerivedStateFromError(error: Error) {
+    return { error: error.message };
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.error) {
       return (
-        <Suspense fallback=''>
-          <h1>Error</h1>
+        <Suspense fallback={<Spinner />}>
+          <div className='error'>
+            <h1 className='error__title'></h1>
+            <p className='error__text'>{this.state.error}</p>
+          </div>
         </Suspense>
       );
     }

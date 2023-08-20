@@ -2,10 +2,10 @@ import './index.scss';
 
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Outlet } from 'react-router-dom';
 
-export const Layout: FC = () => {
+const Layout: FC = () => {
   return (
     <>
       <Header />
@@ -16,3 +16,5 @@ export const Layout: FC = () => {
     </>
   );
 };
+
+export default memo(Layout);

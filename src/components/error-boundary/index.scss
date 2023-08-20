@@ -1,0 +1,15 @@
+.error {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  color: var(--black2);
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__text {
+    font-size: 20px;
+  }
+}
