@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcurrency_tracker=self.webpackChunkcurrency_tracker||[]).push([[27],{27:(c,r,e)=>{e.r(r),e.d(r,{default:()=>s});var n=e(893),t=e(119);const s=(0,e(14).A)((function(){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(t.Z,{}),(0,n.jsx)("h1",{children:"Contacts page"})]})}),"contacts")}}]);
