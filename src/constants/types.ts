@@ -1,3 +1,5 @@
+import { SVGProps } from 'react';
+
 export interface INavLink {
   name: string;
   route: string;
@@ -79,4 +81,16 @@ export interface ICosts {
   [key: string]: {
     [key: string]: ICurrenciesValues;
   };
+}
+
+export interface IContact {
+  contact: string;
+  linkName?: string;
+  linkType?: string;
+}
+
+export interface IMedia {
+  name: string;
+  link: string;
+  icon: (props: SVGProps<SVGElement>) => React.ReactElement<React.JSXElementConstructor<any>>;
 }

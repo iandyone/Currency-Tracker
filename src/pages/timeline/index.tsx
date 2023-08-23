@@ -2,15 +2,21 @@ import './index.scss';
 
 import Banner from '@components/banner';
 import { withSection } from '@utils/hocs/with-section';
-import { FC } from 'react';
+import { Component } from 'react';
 
-const TimelinePage: FC = () => {
-  return (
-    <div className='timeline__content'>
-      <Banner />
-      <h1>Timeline page</h1>
-    </div>
-  );
-};
+class TimelinePage extends Component {
+  constructor(props: any) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className='timeline__content'>
+        <Banner />
+        <h1>Timeline page</h1>
+      </div>
+    );
+  }
+}
 
 export default withSection(TimelinePage, 'timeline');
