@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcurrency_tracker=self.webpackChunkcurrency_tracker||[]).push([[195],{195:(e,c,n)=>{n.r(c),n.d(c,{default:()=>t});var r=n(893),s=n(119);const t=(0,n(14).A)((function(){return(0,r.jsxs)("div",{className:"timeline__content",children:[(0,r.jsx)(s.Z,{}),(0,r.jsx)("h1",{children:"Timeline page"})]})}),"timeline")}}]);
