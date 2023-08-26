@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { Spinner } from '@components/loader';
-import Portal from '@components/portal';
+import Portal from '@components/Portal';
 import { CurrenciesList, ICosts, ICurrencyParams, IOption } from '@constants/types';
 import { setCurrentCurrency, setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery } from '@store/reducers/currencies-api';

@@ -2,6 +2,7 @@ import './index.scss';
 
 import { Spinner } from '@components/loader';
 import { Modal } from '@components/modal/indsx';
+import { UpdateTime } from '@components/update-time';
 import { CurrenciesList, ICosts, ICurrencyCardParams } from '@constants/types';
 import { setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery, useGetCurrenciesDataQuery } from '@store/reducers/currencies-api';
@@ -12,7 +13,7 @@ export const Currencies: FC = () => {
   const currenciesList = Object.keys(CurrenciesList).join(',');
   const { currenciesDataSkip, currensiesPricesSkip } = getSkipConditions();
   const { modal } = useSelectorTyped((store) => store.app);
-  const [updateTime, setUpdateTime] = useState(getUpdateTime());
+  // const [updateTime, setUpdateTime] = useState(getUpdateTime());
   const dispatch = useDispatchTyped();
 
   const { data: currenciesData, isFetching: isFetchingData } = useGetCurrenciesDataQuery(
@@ -43,14 +44,6 @@ export const Currencies: FC = () => {
     };
   }
 
-  function getUpdateTime() {
-    const date = new Date(Date.now());
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    return `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
-  }
-
   const handlerOnClick = useCallback(
     (currency: string) => {
       setModalCurrency(currency as CurrenciesList);
@@ -77,7 +70,7 @@ export const Currencies: FC = () => {
       localStorage.setItem('currenciesData', JSON.stringify(currenciesData));
       setCurrencies(currenciesData);
     }
-    setUpdateTime(getUpdateTime());
+    // setUpdateTime(getUpdateTime());
   }, [currenciesPrice, currenciesData]);
 
   useEffect(() => {
@@ -85,15 +78,12 @@ export const Currencies: FC = () => {
       setCurrencies(currenciesData);
       setPrices(currenciesPrice);
     }
-    setUpdateTime(getUpdateTime());
+    // setUpdateTime(getUpdateTime());
   }, [currenciesPrice, currenciesData, currenciesDataSkip, currensiesPricesSkip]);
 
   return (
     <article className='currencies'>
-      <div className='currencies__date'>
-        Last updated at {updateTime}
-        {new Date().getHours() > 12 ? 'pm' : 'am'}
-      </div>
+      <UpdateTime />
       {isLoading && <Spinner />}
       <ul className='currencies__list'>
         {currencies &&

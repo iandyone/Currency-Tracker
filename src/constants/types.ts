@@ -94,3 +94,33 @@ export interface IMedia {
   link: string;
   icon: (props: SVGProps<SVGElement>) => React.ReactElement<React.JSXElementConstructor<any>>;
 }
+
+export interface ICostInputProps {
+  id: number;
+  setCost: (id: number, value: number) => void;
+}
+
+export interface ICostInputState {
+  value: string;
+}
+
+export interface ISelectState {
+  // option: string;
+  currencies: string[];
+  showMenu: boolean;
+}
+
+export interface ICurrencyGraphState {
+  showGraphButton: boolean;
+  showGraph: boolean;
+  requiredValues: number;
+  option: string;
+  costs: {
+    [key: number]: number;
+  };
+}
+
+export interface ISelectProps {
+  handlerOnClick: (option: string) => void;
+  option: string;
+}

@@ -1,0 +1,21 @@
+.time {
+  color: var(--update-time);
+  transition: var(--transition);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 200%;
+  text-align: center;
+  margin-bottom: 65px;
+  padding-left: 65px;
+  background: url('../../assets/icons/upadate-time.svg') left center no-repeat;
+  align-self: center;
+
+  @media (max-width: 992px) {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+}

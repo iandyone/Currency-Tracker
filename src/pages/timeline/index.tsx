@@ -1,11 +1,12 @@
 import './index.scss';
 
 import Banner from '@components/banner';
+import { Timeline } from '@components/timeline';
 import { withSection } from '@utils/hocs/with-section';
 import { Component } from 'react';
 
-class TimelinePage extends Component {
-  constructor(props: any) {
+class TimelinePage extends Component<object, object> {
+  constructor(props: object) {
     super(props);
   }
 
@@ -13,10 +14,11 @@ class TimelinePage extends Component {
     return (
       <div className='timeline__content'>
         <Banner />
-        <h1>Timeline page</h1>
+
+        <Timeline />
       </div>
     );
   }
 }
 
-export default withSection(TimelinePage, 'timeline');
+export default withSection(TimelinePage, 'timeline-page');
