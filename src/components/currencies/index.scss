@@ -37,6 +37,9 @@
   background: var(--currency-card-bg);
   transition: var(--transition);
 
+  @extend %buttonHover;
+  @extend %buttonActive;
+
   &:hover {
     cursor: pointer;
   }

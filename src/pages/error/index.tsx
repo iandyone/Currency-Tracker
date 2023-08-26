@@ -11,4 +11,4 @@ const ErrorPage: FC = () => {
   );
 };
 
-export default withSection(ErrorPage, 'error');
+export default withSection(ErrorPage, 'error', 'error-page');

@@ -82,7 +82,7 @@ export const Currencies: FC = () => {
   }, [currenciesPrice, currenciesData, currenciesDataSkip, currensiesPricesSkip]);
 
   return (
-    <article className='currencies'>
+    <article className='currencies' data-testid='currencies'>
       <UpdateTime />
       {isLoading && <Spinner />}
       <ul className='currencies__list'>
@@ -114,7 +114,7 @@ const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onC
   }
 
   return (
-    <div className='currencies__currency currency' onClick={handlerOnClick}>
+    <div className='currencies__currency currency' onClick={handlerOnClick} data-testid='currency-card'>
       <div className={`currency__icon currency-${index}`}>{symbol}</div>
       <div className='currency__content'>
         <h4 className='currency__title'>{name}</h4>

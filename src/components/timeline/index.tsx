@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { Graph } from '@components/graph';
+import { Diagram } from '@components/diagram';
 import { UpdateTime } from '@components/update-time';
 import {
   CurrenciesList,
@@ -63,7 +63,7 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
 
   render() {
     return (
-      <div className='timeline'>
+      <div className='timeline' data-testid='timeline'>
         <UpdateTime />
         <div className='graph'>
           <Select handlerOnClick={this.resetState} option={this.state.option} />
@@ -78,12 +78,12 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
           </div>
 
           {this.state.showGraphButton && (
-            <button className='cost__button' onClick={this.showGraph}>
+            <button className='cost__button' onClick={this.showGraph} data-testid='timeline-button'>
               Show graph
             </button>
           )}
 
-          {this.state.showGraph && <Graph costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
+          {this.state.showGraph && <Diagram costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
         </div>
       </div>
     );
@@ -115,14 +115,17 @@ class Select extends PureComponent<ISelectProps, ISelectState> {
   render() {
     return (
       <>
-        <div className='current'>
-          <div className={`current__title ${this.state.showMenu && 'active'}`} onClick={this.handlerOnClickTitle}>
+        <div className='current' data-testid='timeline-select'>
+          <div
+            className={`current__title ${this.state.showMenu && 'active'}`}
+            onClick={this.handlerOnClickTitle}
+            data-testid='timeline-currency'>
             {this.props.option}
           </div>
           <ul className='current__options'>
             {this.state.showMenu &&
               this.state.currencies.map((option) => (
-                <li className='current__option' onClick={this.handlerOnClickOption(option)} key={option}>
+                <li className='current__option' onClick={this.handlerOnClickOption(option)} key={option} data-testid='timeline-select-option'>
                   {option}
                 </li>
               ))}
@@ -150,7 +153,14 @@ class CostInput extends Component<ICostInputProps, ICostInputState> {
     return (
       <div className='cost'>
         <h4 className='cost__title'>Day {this.props.id}: </h4>
-        <input type='number' className='cost__input' value={this.state.value} onChange={this.handlerOnChange} placeholder={placeholder} />
+        <input
+          type='number'
+          className='cost__input'
+          value={this.state.value}
+          onChange={this.handlerOnChange}
+          placeholder={placeholder}
+          data-testid='timeline-input'
+        />
       </div>
     );
   }

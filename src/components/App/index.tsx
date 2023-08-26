@@ -24,7 +24,7 @@ export const App: FC = () => {
   ];
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={`app ${theme}`} data-testid='app'>
       <Suspense fallback={<MemoizedLoader />}>
         <Routes>
           <Route path='/' element={<Layout />}>

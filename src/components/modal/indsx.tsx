@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { Spinner } from '@components/loader';
-import Portal from '@components/Portal';
+import Portal from '@components/portal';
 import { CurrenciesList, ICosts, ICurrencyParams, IOption } from '@constants/types';
 import { setCurrentCurrency, setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery } from '@store/reducers/currencies-api';
@@ -64,14 +64,19 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
   return (
     <Portal id='modal'>
       {modal && (
-        <div className='modal' onClick={handlerOnClick}>
+        <div className='modal' onClick={handlerOnClick} data-testid='modal'>
           <div className='modal__body' onClick={handlerOnClickContent}>
-            <h4 className='modal__title'>{name}</h4>
+            <h4 className='modal__title' data-testid='modal-title'>
+              {name}
+            </h4>
             {isLoading && <Spinner />}
 
             {!isLoading && (
               <div className='modal__course'>
-                1 {currentCurrency} = {price} {symbol}
+                <span data-testid='modal-currency'>1 {currentCurrency} </span> ={' '}
+                <span data-testid='modal-cost'>
+                  {price} {symbol}
+                </span>
               </div>
             )}
             <Select />
@@ -109,7 +114,7 @@ const Select: FC = () => {
 
   return (
     <article className='select'>
-      <div className={classNames.current} onClick={handlerOnClickSelect}>
+      <div className={classNames.current} onClick={handlerOnClickSelect} data-testid='modal-select'>
         {currentCurrency}
       </div>
       <ul className={classNames.menu}>
@@ -128,7 +133,7 @@ const Option: FC<IOption> = ({ currency, onCLick }) => {
   }
 
   return (
-    <li className='select__option' onClick={handlerOnClick}>
+    <li className='select__option' onClick={handlerOnClick} data-testid='modal-select-option'>
       {currency}
     </li>
   );

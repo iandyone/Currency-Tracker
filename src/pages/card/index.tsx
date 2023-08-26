@@ -6,11 +6,11 @@ import { FC } from 'react';
 
 const CardPage: FC = () => {
   return (
-    <div className='card__content'>
+    <>
       <Banner />
       <h1>Card page</h1>
-    </div>
+    </>
   );
 };
 
-export default withSection(CardPage, 'card');
+export default withSection(CardPage, 'card', 'card-page');

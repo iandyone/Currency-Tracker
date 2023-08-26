@@ -14,4 +14,4 @@ const HomePage: FC = () => {
   );
 };
 
-export default withSection(HomePage, 'home');
+export default withSection(HomePage, 'home', 'home-page');

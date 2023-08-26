@@ -11,10 +11,10 @@ import { FC } from 'react';
 
 const ContactsPage: FC = () => {
   return (
-    <>
+    <div className='contacts-page' data-testid='contacts-page'>
       <Banner />
       <Contacts />
-    </>
+    </div>
   );
 };
 
@@ -65,4 +65,4 @@ export const Link: FC = ({ contact, linkName, linkType }: IContact) => {
   );
 };
 
-export default withSection(ContactsPage, 'contacts');
+export default withSection(ContactsPage, 'contacts', 'contacts-page');

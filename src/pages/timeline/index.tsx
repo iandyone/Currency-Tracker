@@ -14,11 +14,10 @@ class TimelinePage extends Component<object, object> {
     return (
       <div className='timeline__content'>
         <Banner />
-
         <Timeline />
       </div>
     );
   }
 }
 
-export default withSection(TimelinePage, 'timeline-page');
+export default withSection(TimelinePage, 'timeline-page', 'timeline-page');

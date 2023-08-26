@@ -1,9 +1,8 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
-import { INavLink, IThemeButtonProps } from '@constants/types';
-import { toggleAppTheme } from '@store/reducers/app-reducer';
-import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
+import { ThemeButton } from '@components/theme-button';
+import { INavLink } from '@constants/types';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -34,31 +33,12 @@ export const Header: FC = () => {
   );
 };
 
-const ThemeButton: FC<IThemeButtonProps> = ({ className }) => {
-  const { theme } = useSelectorTyped((store) => store.app);
-  const dispatch = useDispatchTyped();
-
-  const classNames = {
-    switcher: `theme__switcher ${theme}`,
-    toggler: `theme__toggler ${theme}`,
-  };
-
-  function handlerOnClick() {
-    dispatch(toggleAppTheme());
-  }
+const NavLink: FC<INavLink> = ({ name, route }) => {
+  const linkName = name.split(' ');
+  const testID = linkName[linkName.length - 1].toLowerCase() + '-route';
 
   return (
-    <div className={className} onClick={handlerOnClick}>
-      <div className={classNames.switcher}>
-        <div className={classNames.toggler}></div>
-      </div>
-    </div>
-  );
-};
-
-export const NavLink: FC<INavLink> = ({ name, route }) => {
-  return (
-    <li className='header__link'>
+    <li className='header__link' data-testid={testID}>
       <Link to={route}>{name}</Link>
     </li>
   );

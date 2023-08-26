@@ -14,7 +14,7 @@ interface IGraphProps {
   };
 }
 
-export class Graph extends PureComponent<IGraphProps, object> {
+export class Diagram extends PureComponent<IGraphProps, object> {
   private values: number[] = Object.values(this.props.costs);
   private days: string[] = new Array(this.props.period).fill(0).map((_, index) => String(`Day ${index + 1}`));
   private costs: string[] = this.values.map(String);
@@ -50,7 +50,7 @@ export class Graph extends PureComponent<IGraphProps, object> {
 
   render() {
     return (
-      <div className='graph'>
+      <div className='diagram' data-testid='diagram'>
         <Bar options={this.options} data={this.data} />
       </div>
     );
