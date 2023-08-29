@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcurrency_tracker=self.webpackChunkcurrency_tracker||[]).push([[238],{238:(r,e,c)=>{c.r(e),c.d(e,{default:()=>t});var n=c(893);const t=(0,c(14).A)((function(){return(0,n.jsx)(n.Fragment,{children:(0,n.jsx)("h1",{children:"Error page"})})}),"error")}}]);

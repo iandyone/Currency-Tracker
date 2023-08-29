@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcurrency_tracker=self.webpackChunkcurrency_tracker||[]).push([[657],{657:(r,c,e)=>{e.r(c),e.d(c,{default:()=>s});var a=e(893),n=e(119);const s=(0,e(14).A)((function(){return(0,a.jsxs)("div",{className:"card__content",children:[(0,a.jsx)(n.Z,{}),(0,a.jsx)("h1",{children:"Card page"})]})}),"card")}}]);
