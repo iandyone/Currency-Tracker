@@ -12,7 +12,7 @@ export const currenciesApi = createApi({
         url: '/latest',
         method: 'GET',
         params: {
-          apikey: 'cur_live_cVpV5d9OvabvVEPBYrMev3oyVt8L4CVjgRsOmRRy',
+          apikey: process.env.REACT_APP_CURRENCY_API_KEY,
           currencies: currencies,
           base_currency: base || CurrenciesList.BYN,
         },
@@ -23,7 +23,7 @@ export const currenciesApi = createApi({
         url: '/currencies',
         method: 'GET',
         params: {
-          apikey: 'cur_live_cVpV5d9OvabvVEPBYrMev3oyVt8L4CVjgRsOmRRy',
+          apikey: process.env.REACT_APP_CURRENCY_API_KEY,
           currencies: currencies,
         },
       }),

@@ -2,17 +2,12 @@ import './index.scss';
 
 import { Diagram } from '@components/diagram';
 import { UpdateTime } from '@components/update-time';
-import {
-  CurrenciesList,
-  ICostInputProps,
-  ICostInputState,
-  ICurrencyGraphState,
-  ICurrencyParams,
-  ISelectProps,
-  ISelectState,
-} from '@constants/types';
+import { ICurrencyGraphState } from '@constants/types';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js';
-import { ChangeEvent, Component, PureComponent } from 'react';
+import { Component } from 'react';
+
+import { CostInput } from './cost-input';
+import { Select } from './select';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -25,7 +20,7 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   }
 
   showGrapgButton = () => {
-    this.setState((state) => ({ ...state, showGraphButton: true }));
+    this.setState((prevState) => ({ ...prevState, showGraphButton: true }));
   };
 
   showGraph = () => {
@@ -33,11 +28,11 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   };
 
   showGraphButton = () => {
-    this.setState((state) => ({ ...state, showGraphButton: true }));
+    this.setState((prevState) => ({ ...prevState, showGraphButton: true }));
   };
 
   resetState = (option: string) => {
-    this.setState((state) => ({ ...state, showGraphButton: false, showGraph: false, option }));
+    this.setState((prevState) => ({ ...prevState, showGraphButton: false, showGraph: false, option }));
   };
 
   setCost = (id: number, value: number) => {
@@ -45,12 +40,12 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
 
     if (!value) {
       delete costs[id];
-      this.setState((state) => ({ ...state, costs, showGraphButton: false }));
+      this.setState((prevState) => ({ ...prevState, costs, showGraphButton: false }));
       return;
     }
 
     costs[id] = value;
-    this.setState((state) => ({ ...state, costs }));
+    this.setState((prevState) => ({ ...prevState, costs }));
 
     if (Object.keys(costs).length === this.state.requiredValues) {
       this.showGraphButton();
@@ -58,7 +53,7 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   };
 
   setOption(option: string) {
-    this.setState((state) => ({ ...state, option }));
+    this.setState((prevState) => ({ ...prevState, option }));
   }
 
   render() {
@@ -87,82 +82,6 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
             {this.state.showGraph && <Diagram costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
           </div>
         </div>
-      </div>
-    );
-  }
-}
-
-class Select extends PureComponent<ISelectProps, ISelectState> {
-  constructor(props: ISelectProps) {
-    super(props);
-    this.state = { currencies: [], showMenu: false };
-  }
-
-  componentDidMount(): void {
-    const currenciesData: ICurrencyParams = JSON.parse(localStorage.getItem('currenciesData'));
-    const currencies = Object.keys(CurrenciesList).map((item) => currenciesData.data[item].name);
-
-    this.setState((state) => ({ ...state, currencies }));
-  }
-
-  handlerOnClickTitle = () => {
-    this.setState((state) => ({ ...state, showMenu: !state.showMenu }));
-  };
-
-  handlerOnClickOption = (name: string) => () => {
-    this.setState((state) => ({ ...state, showMenu: false, option: name }));
-    this.props.handlerOnClick(name);
-  };
-
-  render() {
-    return (
-      <>
-        <div className='current' data-testid='timeline-select'>
-          <div
-            className={`current__title ${this.state.showMenu && 'active'}`}
-            onClick={this.handlerOnClickTitle}
-            data-testid='timeline-currency'>
-            {this.props.option}
-          </div>
-          <ul className='current__options'>
-            {this.state.showMenu &&
-              this.state.currencies.map((option) => (
-                <li className='current__option' onClick={this.handlerOnClickOption(option)} key={option} data-testid='timeline-select-option'>
-                  {option}
-                </li>
-              ))}
-          </ul>
-        </div>
-      </>
-    );
-  }
-}
-
-class CostInput extends Component<ICostInputProps, ICostInputState> {
-  constructor(props: ICostInputProps) {
-    super(props);
-    this.state = { value: '' };
-  }
-
-  handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: e.target.value });
-    this.props.setCost(this.props.id, Number(e.target.value));
-  };
-
-  render() {
-    const placeholder = `Day ${this.props.id}`;
-
-    return (
-      <div className='cost'>
-        <h4 className='cost__title'>Day {this.props.id}: </h4>
-        <input
-          type='number'
-          className='cost__input'
-          value={this.state.value}
-          onChange={this.handlerOnChange}
-          placeholder={placeholder}
-          data-testid='timeline-input'
-        />
       </div>
     );
   }

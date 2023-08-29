@@ -23,7 +23,7 @@ export class Diagram extends PureComponent<IGraphProps, object> {
     super(props);
   }
 
-  options = {
+  private options = {
     responsive: true,
     scales: {
       x: {
@@ -37,7 +37,7 @@ export class Diagram extends PureComponent<IGraphProps, object> {
     },
   };
 
-  data = {
+  private data = {
     labels: this.days,
     datasets: [
       {

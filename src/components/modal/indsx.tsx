@@ -2,11 +2,13 @@ import './index.scss';
 
 import { Spinner } from '@components/loader';
 import Portal from '@components/portal';
-import { CurrenciesList, ICosts, ICurrencyParams, IOption } from '@constants/types';
-import { setCurrentCurrency, setModal } from '@store/reducers/app-reducer';
+import { CurrenciesList, ICosts, ICurrencyParams } from '@constants/types';
+import { setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery } from '@store/reducers/currencies-api';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
-import { FC, MouseEvent, useCallback, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
+
+import { Select } from './select';
 
 interface IModalProps {
   currency: keyof typeof CurrenciesList;
@@ -84,57 +86,5 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
         </div>
       )}
     </Portal>
-  );
-};
-
-const Select: FC = () => {
-  const { currentCurrency } = useSelectorTyped((store) => store.app);
-  const [showOptions, setShowOptions] = useState(false);
-  const dispatch = useDispatchTyped();
-  const classNames = {
-    current: getToggleClassNames('select__current'),
-    menu: getToggleClassNames('select__menu'),
-  };
-
-  const handlerOnClick = useCallback(
-    (currency: keyof typeof CurrenciesList) => {
-      dispatch(setCurrentCurrency(currency));
-      setShowOptions(false);
-    },
-    [dispatch],
-  );
-
-  function getToggleClassNames(className: string) {
-    return `${className} ${showOptions && 'active'}`;
-  }
-
-  function handlerOnClickSelect() {
-    setShowOptions(!showOptions);
-  }
-
-  return (
-    <article className='select'>
-      <div className={classNames.current} onClick={handlerOnClickSelect} data-testid='modal-select'>
-        {currentCurrency}
-      </div>
-      <ul className={classNames.menu}>
-        {Object.keys(CurrenciesList).map((currency) => (
-          <Option key={currency} currency={currency as CurrenciesList} onCLick={handlerOnClick} />
-        ))}
-      </ul>
-    </article>
-  );
-};
-
-const Option: FC<IOption> = ({ currency, onCLick }) => {
-  function handlerOnClick(e: MouseEvent<HTMLLIElement>) {
-    e.stopPropagation();
-    onCLick(currency);
-  }
-
-  return (
-    <li className='select__option' onClick={handlerOnClick} data-testid='modal-select-option'>
-      {currency}
-    </li>
   );
 };

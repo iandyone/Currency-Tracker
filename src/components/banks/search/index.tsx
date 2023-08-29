@@ -1,22 +1,19 @@
 import './index.scss';
 
-import { CurrenciesList, handlerWithStringPros } from '@constants/types';
-import { ChangeEvent, MouseEvent, PureComponent } from 'react';
+import { CurrenciesList, handlerWithStringProps } from '@constants/types';
+import { ChangeEvent, PureComponent } from 'react';
+
+import { Option } from './option';
 
 interface ISearchProps {
   className: string;
-  handlerOnClick: handlerWithStringPros;
+  handlerOnClick: handlerWithStringProps;
 }
 
 interface ISearchState {
   value: string;
   searchResult: string[];
   showOptions: boolean;
-}
-
-interface IOptionProps {
-  currency: string;
-  handler: handlerWithStringPros;
 }
 
 export class Search extends PureComponent<ISearchProps, ISearchState> {
@@ -58,29 +55,6 @@ export class Search extends PureComponent<ISearchProps, ISearchState> {
           </ul>
         )}
       </div>
-    );
-  }
-}
-
-class Option extends PureComponent<IOptionProps, object> {
-  constructor(props: IOptionProps) {
-    super(props);
-  }
-
-  handlerOnClick = (e: MouseEvent<HTMLLIElement>) => {
-    const { currency, handler } = this.props;
-
-    e.stopPropagation();
-    handler(currency);
-  };
-
-  render() {
-    const { currency } = this.props;
-
-    return (
-      <li className='search__option' onClick={this.handlerOnClick}>
-        {currency}
-      </li>
     );
   }
 }

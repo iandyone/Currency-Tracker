@@ -1,18 +1,10 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
-import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { IFooterColumn } from '@constants/types';
+import { FC } from 'react';
 
-interface IFooterLink {
-  name: string;
-  route: string;
-}
-
-interface IFooterColumn {
-  column: string;
-  links: IFooterLink[];
-}
+import { LinksColumn } from './links-column';
 
 export const Footer: FC = () => {
   const linkColumns: IFooterColumn[] = [
@@ -64,29 +56,5 @@ export const Footer: FC = () => {
         </div>
       </div>
     </footer>
-  );
-};
-
-const LinksColumn: FC<IFooterColumn> = ({ column, links }) => {
-  const [isActive, setIsActive] = useState(false);
-  const containerClassNames = `navigation__column ${isActive ? 'active' : ''}`;
-
-  function handlerOnClick() {
-    setIsActive(!isActive);
-  }
-
-  return (
-    <div className={containerClassNames} onClick={handlerOnClick}>
-      <h3 className='navigation__title'>{column}</h3>
-      <ul className='navigation__links'>
-        {links.map(({ name, route }) => {
-          return (
-            <li className='navigation__link' key={name}>
-              <Link to={route}>{name}</Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
   );
 };

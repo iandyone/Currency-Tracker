@@ -10,7 +10,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     hot: true,
     historyApiFallback: true,
     compress: true,
-
     static: {
       directory: paths.static,
     },

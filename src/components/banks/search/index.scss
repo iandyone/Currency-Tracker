@@ -47,12 +47,4 @@
     background: var(--banks-bg);
     padding: 10px;
   }
-
-  &__option {
-    border-bottom: 1px solid var(--gray2);
-    padding: 10px 0px;
-    color: var(--banks-text);
-    @extend %buttonHover;
-    @extend %buttonActive;
-  }
 }

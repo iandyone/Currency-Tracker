@@ -1,0 +1,56 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.current {
+  font-size: 25px;
+  width: 100%;
+  max-width: 300px;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  &__title {
+    font-weight: 500;
+    position: relative;
+    color: var(--timeline-cost-text);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 30%;
+      height: 20px;
+      width: 20px;
+      background: url('../../../assets/icons/arrow.svg') right center no-repeat;
+      transition: var(--transition);
+    }
+
+    &.active::before {
+      transform: rotate(180deg);
+      transition: var(--transition);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--black);
+    overflow: auto;
+    z-index: 150;
+  }
+
+  &__option {
+    font-size: 18px;
+    border-bottom: 1px solid var(--gray2);
+    padding: 10px 0px;
+
+    &:hover {
+      transition: var(--transition);
+      @extend %buttonHover;
+    }
+  }
+}

@@ -1,28 +1,14 @@
 import { SVGProps } from 'react';
 
-export interface INavLink {
-  name: string;
-  route: string;
-}
-
-export interface IThemeButtonProps {
-  className: string;
-}
+export type handlerWithStringProps = (name: string) => void;
 
 export type Theme = 'light' | 'dark';
 
-export interface ICurrencyData {
-  data: ICurrency;
-}
-
-export interface ICurrency {
-  code: string;
-  decimal_digits: number;
-  name: string;
-  name_plural: string;
-  rounding: number;
-  symbol: string;
-  symbol_native: string;
+export enum BankMaps {
+  PRIOR = 'mapbox://styles/iandyone/cllw8h6uk00ha01pf2q327g48',
+  ALPHA = 'mapbox://styles/iandyone/cllw9lf8l00gn01pjbzcub87a',
+  ALL = 'mapbox://styles/iandyone/cllw9d9pg00gf01r49ilh84cz',
+  NONE = 'mapbox://styles/iandyone/cllwb75il00gq01r49glw5j40',
 }
 
 export enum CurrenciesList {
@@ -38,11 +24,27 @@ export enum CurrenciesList {
   JPY = 'JPY',
 }
 
-export enum BankMaps {
-  PRIOR = 'mapbox://styles/iandyone/cllw8h6uk00ha01pf2q327g48',
-  ALPHA = 'mapbox://styles/iandyone/cllw9lf8l00gn01pjbzcub87a',
-  ALL = 'mapbox://styles/iandyone/cllw9d9pg00gf01r49ilh84cz',
-  NONE = 'mapbox://styles/iandyone/cllwb75il00gq01r49glw5j40',
+export interface INavLink {
+  name: string;
+  route: string;
+}
+
+export interface IThemeButtonProps {
+  className: string;
+}
+
+export interface ICurrencyData {
+  data: ICurrency;
+}
+
+export interface ICurrency {
+  code: string;
+  decimal_digits: number;
+  name: string;
+  name_plural: string;
+  rounding: number;
+  symbol: string;
+  symbol_native: string;
 }
 
 export interface IGetCurrenciesParams {
@@ -73,15 +75,6 @@ export interface ICurrencyParams {
 export interface IOption {
   currency: keyof typeof CurrenciesList;
   onCLick: (currency: keyof typeof CurrenciesList) => void;
-}
-
-export interface ICurrencyCardParams {
-  price: number;
-  name: string;
-  symbol: string;
-  index: number;
-  currency: string;
-  onClick: (currency: string) => void;
 }
 
 export interface ICosts {
@@ -136,4 +129,13 @@ export interface ISearchProps {
   className: string;
   handlerOnClick?: (name: string) => void;
 }
-export type handlerWithStringPros = (name: string) => void;
+
+export interface IFooterColumn {
+  column: string;
+  links: IFooterLink[];
+}
+
+export interface IFooterLink {
+  name: string;
+  route: string;
+}

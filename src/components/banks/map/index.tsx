@@ -3,12 +3,12 @@ import './index.scss';
 import { BankMaps, CurrenciesList } from '@constants/types';
 import mapboxgl from 'mapbox-gl';
 import { createRef, PureComponent } from 'react';
-mapboxgl.accessToken = 'pk.eyJ1IjoiaWFuZHlvbmUiLCJhIjoiY2xsdXU2cXJwMW5ndDNrdGhyeWF5a3M3bSJ9.oZ9P-mgq16XfJIq5E2x2zA';
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKKEN;
 
 interface IMapProps {
   currency: string;
 }
-
 export class Map extends PureComponent<IMapProps, object> {
   private mapContainer: React.RefObject<HTMLDivElement>;
   private map: mapboxgl.Map;

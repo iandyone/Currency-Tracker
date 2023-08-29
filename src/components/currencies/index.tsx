@@ -3,11 +3,13 @@ import './index.scss';
 import { Spinner } from '@components/loader';
 import { Modal } from '@components/modal/indsx';
 import { UpdateTime } from '@components/update-time';
-import { CurrenciesList, ICosts, ICurrencyCardParams } from '@constants/types';
+import { CurrenciesList, ICosts } from '@constants/types';
 import { setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery, useGetCurrenciesDataQuery } from '@store/reducers/currencies-api';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC, useCallback, useEffect, useState } from 'react';
+
+import { CurrencyCard } from './currency-card';
 
 export const Currencies: FC = () => {
   const currenciesList = Object.keys(CurrenciesList).join(',');
@@ -24,11 +26,12 @@ export const Currencies: FC = () => {
     { skip: currensiesPricesSkip },
   );
 
-  const isLoading = isFetchingData || isFetchingPrices;
-
   const [currencies, setCurrencies] = useState(JSON.parse(localStorage.getItem('currenciesData')));
   const [prices, setPrices] = useState(JSON.parse(localStorage.getItem('currenciesPrice')));
   const [modalCurrency, setModalCurrency] = useState<CurrenciesList>();
+
+  const isLoading = isFetchingData || isFetchingPrices;
+  const showCards = currencies && prices;
 
   function getSkipConditions() {
     const lastUpdateDate = localStorage.getItem('update') || '';
@@ -84,8 +87,7 @@ export const Currencies: FC = () => {
         <UpdateTime />
         {isLoading && <Spinner />}
         <ul className='currencies__list'>
-          {currencies &&
-            prices &&
+          {showCards &&
             Object.keys(currencies.data).map((currency, index) => {
               const { name, symbol } = currencies.data[currency];
               return (
@@ -107,20 +109,20 @@ export const Currencies: FC = () => {
   );
 };
 
-const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
-  function handlerOnClick() {
-    onClick(currency);
-  }
+// const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
+//   function handlerOnClick() {
+//     onClick(currency);
+//   }
 
-  return (
-    <div className='currencies__currency currency' onClick={handlerOnClick} data-testid='currency-card'>
-      <div className={`currency__icon currency-${index}`}>{symbol}</div>
-      <div className='currency__content'>
-        <h4 className='currency__title'>{name}</h4>
-        <p className='currency__price'>
-          1 BYN = {price.toFixed(5)} {symbol}
-        </p>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className='currencies__currency currency' onClick={handlerOnClick} data-testid='currency-card'>
+//       <div className={`currency__icon currency-${index}`}>{symbol}</div>
+//       <div className='currency__content'>
+//         <h4 className='currency__title'>{name}</h4>
+//         <p className='currency__price'>
+//           1 BYN = {price.toFixed(5)} {symbol}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };

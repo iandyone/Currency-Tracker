@@ -59,15 +59,4 @@
       font-size: 10px;
     }
   }
-
-  &__link {
-    color: var(--navLinkColor);
-    font-weight: 300;
-    line-height: calc(40 / 20 * 100%);
-    user-select: none;
-    white-space: nowrap;
-
-    @extend %buttonHover;
-    @extend %buttonActive;
-  }
 }

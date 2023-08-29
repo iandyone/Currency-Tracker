@@ -1,10 +1,10 @@
 import './index.scss';
-import '@pages/home';
 
-import { Spinner } from '@components/loader';
 import { useSelectorTyped } from '@utils/hooks/redux-hooks';
-import { FC, lazy, memo, Suspense } from 'react';
+import { FC, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import Loader from './loader';
 
 const Layout = lazy(() => import('@components/layout'));
 const CardPage = lazy(() => import('@pages/card'));
@@ -25,7 +25,7 @@ export const App: FC = () => {
 
   return (
     <div className={`app ${theme}`} data-testid='app'>
-      <Suspense fallback={<MemoizedLoader />}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path='/' element={<Layout />}>
             {routes.map(({ element: Element, index, path }) => {
@@ -37,13 +37,3 @@ export const App: FC = () => {
     </div>
   );
 };
-
-const Loader: FC = () => {
-  return (
-    <div className='loader'>
-      <Spinner />
-    </div>
-  );
-};
-
-const MemoizedLoader = memo(Loader);
