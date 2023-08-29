@@ -12,8 +12,10 @@ import { FC } from 'react';
 const ContactsPage: FC = () => {
   return (
     <div className='contacts-page' data-testid='contacts-page'>
-      <Banner />
-      <Contacts />
+      <div className='contacts-page__container'>
+        <Banner />
+        <Contacts />
+      </div>
     </div>
   );
 };
@@ -35,19 +37,21 @@ export const Contacts: FC = () => {
 
   return (
     <div className='contacts'>
-      <h1 className='contacts__title'>Contact Us:</h1>
-      <div className='contacts__content'>
-        <ul className='contacts__column'>
-          {contacts.map((link) => (
-            <Link {...link} key={link.contact} />
-          ))}
-        </ul>
-        <div className='contacts__column'>
-          {media.map(({ icon: Element, link, name }) => (
-            <a href={link} target='_blank' className='contacts__media' rel='noreferrer' key={name}>
-              <Element fill='var(--green)' />
-            </a>
-          ))}
+      <div className='contacts__container container'>
+        <h1 className='contacts__title'>Contact Us:</h1>
+        <div className='contacts__content'>
+          <ul className='contacts__column'>
+            {contacts.map((link) => (
+              <Link {...link} key={link.contact} />
+            ))}
+          </ul>
+          <div className='contacts__column'>
+            {media.map(({ icon: Element, link, name }) => (
+              <a href={link} target='_blank' className='contacts__media' rel='noreferrer' key={name}>
+                <Element fill='var(--green)' />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -2,9 +2,12 @@
 @import '@styles/templates.scss';
 
 .currencies {
-  display: flex;
-  flex-direction: column;
   @extend %pageContent;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__list {
     display: grid;

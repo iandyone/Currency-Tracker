@@ -1,4 +1,5 @@
 .time {
+  display: inline-block;
   color: var(--update-time);
   transition: var(--transition);
   font-size: 32px;
@@ -9,6 +10,7 @@
   padding-left: 65px;
   background: url('../../assets/icons/upadate-time.svg') left center no-repeat;
   align-self: center;
+  position: relative;
 
   @media (max-width: 992px) {
     font-size: 26px;
@@ -17,5 +19,6 @@
 
   @media (max-width: 768px) {
     font-size: 18px;
+    margin-bottom: 20px;
   }
 }

@@ -1,0 +1,6 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.card {
+  @extend %pagePagging;
+}

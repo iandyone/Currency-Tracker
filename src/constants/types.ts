@@ -38,6 +38,13 @@ export enum CurrenciesList {
   JPY = 'JPY',
 }
 
+export enum BankMaps {
+  PRIOR = 'mapbox://styles/iandyone/cllw8h6uk00ha01pf2q327g48',
+  ALPHA = 'mapbox://styles/iandyone/cllw9lf8l00gn01pjbzcub87a',
+  ALL = 'mapbox://styles/iandyone/cllw9d9pg00gf01r49ilh84cz',
+  NONE = 'mapbox://styles/iandyone/cllwb75il00gq01r49glw5j40',
+}
+
 export interface IGetCurrenciesParams {
   currencies: string;
   base?: keyof typeof CurrenciesList;
@@ -124,3 +131,9 @@ export interface ISelectProps {
   handlerOnClick: (option: string) => void;
   option: string;
 }
+
+export interface ISearchProps {
+  className: string;
+  handlerOnClick?: (name: string) => void;
+}
+export type handlerWithStringPros = (name: string) => void;

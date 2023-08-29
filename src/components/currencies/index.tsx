@@ -13,7 +13,6 @@ export const Currencies: FC = () => {
   const currenciesList = Object.keys(CurrenciesList).join(',');
   const { currenciesDataSkip, currensiesPricesSkip } = getSkipConditions();
   const { modal } = useSelectorTyped((store) => store.app);
-  // const [updateTime, setUpdateTime] = useState(getUpdateTime());
   const dispatch = useDispatchTyped();
 
   const { data: currenciesData, isFetching: isFetchingData } = useGetCurrenciesDataQuery(
@@ -70,7 +69,6 @@ export const Currencies: FC = () => {
       localStorage.setItem('currenciesData', JSON.stringify(currenciesData));
       setCurrencies(currenciesData);
     }
-    // setUpdateTime(getUpdateTime());
   }, [currenciesPrice, currenciesData]);
 
   useEffect(() => {
@@ -78,32 +76,33 @@ export const Currencies: FC = () => {
       setCurrencies(currenciesData);
       setPrices(currenciesPrice);
     }
-    // setUpdateTime(getUpdateTime());
   }, [currenciesPrice, currenciesData, currenciesDataSkip, currensiesPricesSkip]);
 
   return (
     <article className='currencies' data-testid='currencies'>
-      <UpdateTime />
-      {isLoading && <Spinner />}
-      <ul className='currencies__list'>
-        {currencies &&
-          prices &&
-          Object.keys(currencies.data).map((currency, index) => {
-            const { name, symbol } = currencies.data[currency];
-            return (
-              <CurrencyCard
-                name={name}
-                symbol={symbol}
-                key={name}
-                price={prices.data[currency].value}
-                index={index + 1}
-                onClick={handlerOnClick}
-                currency={currency}
-              />
-            );
-          })}
-      </ul>
-      {modal && <Modal currency={modalCurrency} />}
+      <div className='currencies__container container'>
+        <UpdateTime />
+        {isLoading && <Spinner />}
+        <ul className='currencies__list'>
+          {currencies &&
+            prices &&
+            Object.keys(currencies.data).map((currency, index) => {
+              const { name, symbol } = currencies.data[currency];
+              return (
+                <CurrencyCard
+                  name={name}
+                  symbol={symbol}
+                  key={name}
+                  price={prices.data[currency].value}
+                  index={index + 1}
+                  onClick={handlerOnClick}
+                  currency={currency}
+                />
+              );
+            })}
+        </ul>
+        {modal && <Modal currency={modalCurrency} />}
+      </div>
     </article>
   );
 };

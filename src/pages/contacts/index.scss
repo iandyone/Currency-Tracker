@@ -2,6 +2,8 @@
 @import '@styles/templates.scss';
 
 .contacts {
+  @extend %pageContent;
+
   &__title {
     text-align: center;
     font-size: 40px;

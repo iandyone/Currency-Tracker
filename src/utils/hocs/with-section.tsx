@@ -5,11 +5,7 @@ export function withSection(SourceComponent: ComponentType, baseClassName: strin
     render() {
       return (
         <section className={baseClassName} data-testid={testid}>
-          <div className={`${baseClassName}__container container`}>
-            <div className={`${baseClassName}__body`}>
-              <SourceComponent {...this.props} />
-            </div>
-          </div>
+          <SourceComponent {...this.props} />
         </section>
       );
     }

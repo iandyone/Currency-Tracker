@@ -1,0 +1,58 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.search {
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  z-index: 100;
+
+  &__input {
+    padding: 20px;
+    color: var(--banks-text);
+    background: var(--banks-bg);
+    font-size: 18px;
+    font-weight: 400;
+    height: 65px;
+    width: 100%;
+    align-self: center;
+    position: relative;
+    transition: var(--transition);
+    border: 1px solid var(--currency-card-border);
+    background:
+      url('../../../assets/icons/search.svg') 95% no-repeat,
+      var(--banks-bg);
+
+    &:focus {
+      transition: var(--transition);
+    }
+
+    @media (max-width: 992px) {
+      padding: 15px;
+      height: 55px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
+      height: 45px;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--banks-bg);
+    padding: 10px;
+  }
+
+  &__option {
+    border-bottom: 1px solid var(--gray2);
+    padding: 10px 0px;
+    color: var(--banks-text);
+    @extend %buttonHover;
+    @extend %buttonActive;
+  }
+}

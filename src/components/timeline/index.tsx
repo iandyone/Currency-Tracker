@@ -64,26 +64,28 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   render() {
     return (
       <div className='timeline' data-testid='timeline'>
-        <UpdateTime />
-        <div className='graph'>
-          <Select handlerOnClick={this.resetState} option={this.state.option} />
-          <div className='cost__body'>
-            {this.state.option !== this.defaultOption && !this.state.showGraph && (
-              <div className='cost__content'>
-                {new Array(this.state.requiredValues).fill(1).map((_, index) => (
-                  <CostInput id={index + 1} key={index} setCost={this.setCost} />
-                ))}
-              </div>
+        <div className='timeline__container container'>
+          <UpdateTime />
+          <div className='graph'>
+            <Select handlerOnClick={this.resetState} option={this.state.option} />
+            <div className='cost__body'>
+              {this.state.option !== this.defaultOption && !this.state.showGraph && (
+                <div className='cost__content'>
+                  {new Array(this.state.requiredValues).fill(1).map((_, index) => (
+                    <CostInput id={index + 1} key={index} setCost={this.setCost} />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {this.state.showGraphButton && (
+              <button className='cost__button' onClick={this.showGraph} data-testid='timeline-button'>
+                Show graph
+              </button>
             )}
+
+            {this.state.showGraph && <Diagram costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
           </div>
-
-          {this.state.showGraphButton && (
-            <button className='cost__button' onClick={this.showGraph} data-testid='timeline-button'>
-              Show graph
-            </button>
-          )}
-
-          {this.state.showGraph && <Diagram costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
         </div>
       </div>
     );

@@ -2,6 +2,7 @@
   --Poppins: 'Poppins';
   --black: #030304;
   --black2: #202025;
+  --black3: #1b2028;
   --white: #fff;
   --white2: #d9d9d9;
   --green: #00ce2c;
@@ -51,6 +52,10 @@
   --currency-symbol-bg-9: var(--green3);
   --currency-symbol-bg-10: var(--green4);
 
+  --banks-bg: var(--black2);
+  --banks-text: var(--white);
+  --banks-title: var(--white);
+
   --modal-bg: var(--black2);
   --modal-title: var(--white);
   --modal-text: var(--white);
@@ -93,6 +98,10 @@
   --currency-symbol-bg-8: var(--brown2);
   --currency-symbol-bg-9: var(--brown2);
   --currency-symbol-bg-10: var(--brown2);
+
+  --banks-bg: var(--white2);
+  --banks-text: var(--black);
+  --banks-title: var(--black2);
 
   --modal-bg: var(--white);
   --modal-title: var(--black2);
