@@ -1,8 +1,8 @@
 import './index.scss';
 
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 
-export const UpdateTime: FC = () => {
+const UpdateTime: FC = () => {
   const [updateTime] = useState(getUpdateTime);
 
   function getUpdateTime() {
@@ -20,3 +20,5 @@ export const UpdateTime: FC = () => {
     </div>
   );
 };
+
+export default memo(UpdateTime);

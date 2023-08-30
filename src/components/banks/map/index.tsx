@@ -12,7 +12,6 @@ interface IMapProps {
 export class Map extends PureComponent<IMapProps, object> {
   private mapContainer: React.RefObject<HTMLDivElement>;
   private map: mapboxgl.Map;
-  private mapData: { lng: 27.5676; lat: 53.9058; zoom: 10.65 };
 
   constructor(props: IMapProps) {
     super(props);
@@ -24,8 +23,8 @@ export class Map extends PureComponent<IMapProps, object> {
 
     this.map = new mapboxgl.Map({
       container: this.mapContainer.current,
-      style: BankMaps.ALL,
       center: [data.lng, data.lat],
+      style: BankMaps.ALL,
       zoom: data.zoom,
     });
   }

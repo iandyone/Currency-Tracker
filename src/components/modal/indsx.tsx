@@ -39,7 +39,7 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
   }
 
   function getSkipConditions() {
-    const costData = JSON.parse(localStorage.getItem('costs'));
+    const costData = getCashedCosts();
 
     return {
       costsSkip: Boolean(costData[currentCurrency]),
@@ -48,20 +48,26 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
 
   useEffect(() => {
     if (!isLoading && costs) {
-      const costsData: ICosts = JSON.parse(localStorage.getItem('costs'));
+      const costsData: ICosts = getCashedCosts();
+
       costsData[currentCurrency] = costs.data;
       localStorage.setItem('costs', JSON.stringify(costsData));
+
       setPrice(costsData[currentCurrency][currency].value);
     }
   }, [costs, currency, currentCurrency, isLoading]);
 
   useEffect(() => {
-    const costsData: ICosts = JSON.parse(localStorage.getItem('costs'));
+    const costsData: ICosts = getCashedCosts();
 
     if (costsData[currentCurrency]) {
       setPrice(costsData[currentCurrency][currency].value);
     }
   }, [currentCurrency, currency]);
+
+  function getCashedCosts() {
+    return JSON.parse(localStorage.getItem('costs'));
+  }
 
   return (
     <Portal id='modal'>
@@ -75,7 +81,7 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
 
             {!isLoading && (
               <div className='modal__course'>
-                <span data-testid='modal-currency'>1 {currentCurrency} </span> ={' '}
+                <span data-testid='modal-currency'>1 {currentCurrency} </span> =
                 <span data-testid='modal-cost'>
                   {price} {symbol}
                 </span>

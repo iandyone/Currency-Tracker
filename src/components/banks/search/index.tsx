@@ -29,7 +29,7 @@ export class Search extends PureComponent<ISearchProps, ISearchState> {
     const shouldOptionsBeVisible = Boolean(value.length);
     const results = this.currencies.filter((currency) => currency.toLowerCase().includes(value));
 
-    this.setState((prevState) => ({ ...prevState, value: e.target.value, searchResult: results, showOptions: shouldOptionsBeVisible }));
+    this.setState({ value: e.target.value, searchResult: results, showOptions: shouldOptionsBeVisible });
   };
 
   handlerOnClickOption = (currency: string) => {
@@ -48,7 +48,7 @@ export class Search extends PureComponent<ISearchProps, ISearchState> {
       <div className={this.props.className + ' search'}>
         <input className='search__input' value={value} onChange={this.handlerOnChange} type='text' placeholder='Сurrency search...' />
         {showOptions && (
-          <ul className='search__options' onClick={this.handlerOnClickOptions}>
+          <ul className='search__options'>
             {searchResult.map((currency) => (
               <Option key={currency} currency={currency} handler={this.handlerOnClickOption} />
             ))}

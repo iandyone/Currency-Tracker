@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { Map } from '@components/banks/map';
-import { UpdateTime } from '@components/update-time';
+import UpdateTime from '@components/update-time';
 import { Component } from 'react';
 
 import { Search } from './search';

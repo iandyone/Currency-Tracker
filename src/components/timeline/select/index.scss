@@ -32,6 +32,10 @@
       transform: rotate(180deg);
       transition: var(--transition);
     }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
   }
 
   &__options {

@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { useSelectorTyped } from '@utils/hooks/redux-hooks';
-import { FC, lazy, Suspense } from 'react';
+import { FC, lazy, memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Loader from './loader';
@@ -13,7 +13,7 @@ const ErrorPage = lazy(() => import('@pages/error'));
 const HomePage = lazy(() => import('@pages/home'));
 const TimelinePage = lazy(() => import('@pages/timeline'));
 
-export const App: FC = () => {
+const App: FC = () => {
   const { theme } = useSelectorTyped((store) => store.app);
   const routes = [
     { path: '/', element: HomePage, index: true },
@@ -37,3 +37,5 @@ export const App: FC = () => {
     </div>
   );
 };
+
+export default memo(App);

@@ -2,7 +2,7 @@ import './index.scss';
 
 import { Spinner } from '@components/loader';
 import { Modal } from '@components/modal/indsx';
-import { UpdateTime } from '@components/update-time';
+import UpdateTime from '@components/update-time';
 import { CurrenciesList, ICosts } from '@constants/types';
 import { setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery, useGetCurrenciesDataQuery } from '@store/reducers/currencies-api';
@@ -26,9 +26,9 @@ export const Currencies: FC = () => {
     { skip: currensiesPricesSkip },
   );
 
-  const [currencies, setCurrencies] = useState(JSON.parse(localStorage.getItem('currenciesData')));
-  const [prices, setPrices] = useState(JSON.parse(localStorage.getItem('currenciesPrice')));
-  const [modalCurrency, setModalCurrency] = useState<CurrenciesList>();
+  const [currencies, setCurrencies] = useState(getInitialCurrencies);
+  const [prices, setPrices] = useState(geInitialPrices);
+  const [modalCurrency, setModalCurrency] = useState<CurrenciesList>(null);
 
   const isLoading = isFetchingData || isFetchingPrices;
   const showCards = currencies && prices;
@@ -44,6 +44,14 @@ export const Currencies: FC = () => {
       currenciesDataSkip: Boolean(currenciesData) && savedData,
       currensiesPricesSkip: lastUpdateDate === new Date().toDateString() && savedPrices,
     };
+  }
+
+  function geInitialPrices() {
+    return JSON.parse(localStorage.getItem('currenciesPrice'));
+  }
+
+  function getInitialCurrencies() {
+    return JSON.parse(localStorage.getItem('currenciesData'));
   }
 
   const handlerOnClick = useCallback(
@@ -108,21 +116,3 @@ export const Currencies: FC = () => {
     </article>
   );
 };
-
-// const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
-//   function handlerOnClick() {
-//     onClick(currency);
-//   }
-
-//   return (
-//     <div className='currencies__currency currency' onClick={handlerOnClick} data-testid='currency-card'>
-//       <div className={`currency__icon currency-${index}`}>{symbol}</div>
-//       <div className='currency__content'>
-//         <h4 className='currency__title'>{name}</h4>
-//         <p className='currency__price'>
-//           1 BYN = {price.toFixed(5)} {symbol}
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };

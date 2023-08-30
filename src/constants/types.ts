@@ -127,7 +127,7 @@ export interface ISelectProps {
 
 export interface ISearchProps {
   className: string;
-  handlerOnClick?: (name: string) => void;
+  handlerOnClick?: handlerWithStringProps;
 }
 
 export interface IFooterColumn {

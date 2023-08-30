@@ -31,8 +31,8 @@ export class Diagram extends PureComponent<IGraphProps, object> {
         max: this.props.period,
       },
       y: {
-        min: Math.min(Math.min(...this.values) - 1, 0),
-        max: Math.max(...this.values) + 1,
+        min: Math.min(Math.min(...this.values) - 0.5, 0),
+        max: Math.max(...this.values) + 0.5,
       },
     },
   };

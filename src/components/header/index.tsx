@@ -6,7 +6,7 @@ import { INavLink } from '@constants/types';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { NavLink } from './nav-link';
+import { NavLink } from './navlink';
 
 export const Header: FC = () => {
   const pagesList: INavLink[] = [

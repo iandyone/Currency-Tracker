@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { Diagram } from '@components/diagram';
-import { UpdateTime } from '@components/update-time';
+import UpdateTime from '@components/update-time';
 import { ICurrencyGraphState } from '@constants/types';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js';
 import { Component } from 'react';
@@ -57,29 +57,32 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   }
 
   render() {
+    const { costs, option, requiredValues, showGraph, showGraphButton } = this.state;
+    const inputItems = new Array(requiredValues).fill(1);
+
     return (
       <div className='timeline' data-testid='timeline'>
         <div className='timeline__container container'>
           <UpdateTime />
           <div className='graph'>
-            <Select handlerOnClick={this.resetState} option={this.state.option} />
+            <Select handlerOnClick={this.resetState} option={option} />
             <div className='cost__body'>
-              {this.state.option !== this.defaultOption && !this.state.showGraph && (
+              {option !== this.defaultOption && !showGraph && (
                 <div className='cost__content'>
-                  {new Array(this.state.requiredValues).fill(1).map((_, index) => (
+                  {inputItems.map((_, index) => (
                     <CostInput id={index + 1} key={index} setCost={this.setCost} />
                   ))}
                 </div>
               )}
             </div>
 
-            {this.state.showGraphButton && (
+            {showGraphButton && (
               <button className='cost__button' onClick={this.showGraph} data-testid='timeline-button'>
                 Show graph
               </button>
             )}
 
-            {this.state.showGraph && <Diagram costs={this.state.costs} period={this.state.requiredValues} currency={this.state.option} />}
+            {showGraph && <Diagram costs={costs} period={requiredValues} currency={option} />}
           </div>
         </div>
       </div>

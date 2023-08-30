@@ -22,12 +22,14 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   render() {
-    if (this.state.error) {
+    const { error } = this.state;
+
+    if (error) {
       return (
         <Suspense fallback={<Spinner />}>
           <div className='error'>
             <h1 className='error__title'></h1>
-            <p className='error__text'>{this.state.error}</p>
+            <p className='error__text'>{error}</p>
           </div>
         </Suspense>
       );

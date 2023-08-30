@@ -1,6 +1,6 @@
 import './index.scss';
 
-import Logo from '@assets/icons//logo.webp';
+import Logo from '@assets/icons/logo.webp';
 import { FC, memo } from 'react';
 
 const Banner: FC = () => {

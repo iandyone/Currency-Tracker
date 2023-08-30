@@ -21,23 +21,22 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
   };
 
   handlerOnClickOption = (name: string) => () => {
-    this.setState((state) => ({ ...state, showMenu: false, option: name }));
+    this.setState((state) => ({ ...state, showMenu: false }));
     this.props.handlerOnClick(name);
   };
 
   render() {
+    const { currencies, showMenu } = this.state;
+
     return (
       <>
         <div className='current' data-testid='timeline-select'>
-          <div
-            className={`current__title ${this.state.showMenu && 'active'}`}
-            onClick={this.handlerOnClickTitle}
-            data-testid='timeline-currency'>
+          <div className={`current__title ${showMenu && 'active'}`} onClick={this.handlerOnClickTitle} data-testid='timeline-currency'>
             {this.props.option}
           </div>
           <ul className='current__options'>
-            {this.state.showMenu &&
-              this.state.currencies.map((option) => (
+            {showMenu &&
+              currencies.map((option) => (
                 <li className='current__option' onClick={this.handlerOnClickOption(option)} key={option} data-testid='timeline-select-option'>
                   {option}
                 </li>
