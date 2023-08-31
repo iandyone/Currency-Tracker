@@ -2,7 +2,6 @@
 
 .timeline-page {
   &__content {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
   }
 }

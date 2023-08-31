@@ -1,9 +1,9 @@
 @import '@styles/variables.scss';
 @import '@styles/templates.scss';
 
-.contacts {
-  @extend %pageContent;
+$fs: 30px;
 
+.contacts {
   &__title {
     text-align: center;
     font-size: 40px;
@@ -17,14 +17,14 @@
     }
 
     @media (max-width: 992px) {
-      font-size: 30px;
+      font-size: $fs;
     }
   }
 
   &__content {
     display: flex;
-    gap: 15px;
     justify-content: space-between;
+    gap: 15px;
 
     @media (max-width: 992px) {
       row-gap: 30px;
@@ -34,8 +34,7 @@
   }
 
   &__column {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     row-gap: 15px;
 
     &:nth-child(2) {
@@ -53,7 +52,7 @@
   }
 
   &__link {
-    font-size: 30px;
+    font-size: $fs;
     color: var(--contacts-text);
     transition: var(--transition);
 

@@ -1,28 +1,11 @@
-import { SVGProps } from 'react';
-
-export type handlerWithStringProps = (name: string) => void;
+import { LazyExoticComponent, ReactElement, SVGProps } from 'react';
+import { CurrenciesList } from './enums';
 
 export type Theme = 'light' | 'dark';
 
-export enum BankMaps {
-  PRIOR = 'mapbox://styles/iandyone/cllw8h6uk00ha01pf2q327g48',
-  ALPHA = 'mapbox://styles/iandyone/cllw9lf8l00gn01pjbzcub87a',
-  ALL = 'mapbox://styles/iandyone/cllw9d9pg00gf01r49ilh84cz',
-  NONE = 'mapbox://styles/iandyone/cllwb75il00gq01r49glw5j40',
-}
+export type handlerWithStringProps = (name: string) => void;
 
-export enum CurrenciesList {
-  EUR = 'EUR',
-  USD = 'USD',
-  GBP = 'GBP',
-  CHF = 'CHF',
-  AUD = 'AUD',
-  CNY = 'CNY',
-  PLN = 'PLN',
-  UAH = 'UAH',
-  BYN = 'BYN',
-  JPY = 'JPY',
-}
+export type handlerWithSVGProps = (props: SVGProps<SVGElement>) => ReactElement;
 
 export interface INavLink {
   name: string;
@@ -72,11 +55,6 @@ export interface ICurrencyParams {
   };
 }
 
-export interface IOption {
-  currency: keyof typeof CurrenciesList;
-  onCLick: (currency: keyof typeof CurrenciesList) => void;
-}
-
 export interface ICosts {
   [key: string]: {
     [key: string]: ICurrenciesValues;
@@ -92,7 +70,7 @@ export interface IContact {
 export interface IMedia {
   name: string;
   link: string;
-  icon: (props: SVGProps<SVGElement>) => React.ReactElement<React.JSXElementConstructor<any>>;
+  icon: (props: SVGProps<SVGElement>) => ReactElement<React.JSXElementConstructor<any>>;
 }
 
 export interface ICostInputProps {
@@ -102,40 +80,16 @@ export interface ICostInputProps {
 
 export interface ICostInputState {
   value: string;
-}
-
-export interface ISelectState {
-  // option: string;
-  currencies: string[];
-  showMenu: boolean;
+  error: string;
 }
 
 export interface ICurrencyGraphState {
-  showGraphButton: boolean;
   showGraph: boolean;
-  requiredValues: number;
-  option: string;
-  costs: {
-    [key: number]: number;
-  };
-}
-
-export interface ISelectProps {
-  handlerOnClick: (option: string) => void;
   option: string;
 }
 
-export interface ISearchProps {
-  className: string;
-  handlerOnClick?: handlerWithStringProps;
-}
-
-export interface IFooterColumn {
-  column: string;
-  links: IFooterLink[];
-}
-
-export interface IFooterLink {
-  name: string;
-  route: string;
+export interface IRoutesList {
+  path: string;
+  element: LazyExoticComponent<any>;
+  index: boolean;
 }

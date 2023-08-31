@@ -1,19 +1,19 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
-import { ThemeButton } from '@components/theme-button';
+import { NavLink } from '@components/Header/Navlink';
+import { ThemeButton } from '@components/ThemeButton';
+import { Routes } from '@constants/enums';
 import { INavLink } from '@constants/types';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { NavLink } from './navlink';
-
 export const Header: FC = () => {
   const pagesList: INavLink[] = [
-    { name: 'Home', route: '/' },
-    { name: 'Timeline', route: '/timeline' },
-    { name: 'Bank card', route: '/card' },
-    { name: 'Contacts', route: '/contacts' },
+    { name: 'Home', route: Routes.MAIN },
+    { name: 'Timeline', route: Routes.TIMELINE },
+    { name: 'Bank card', route: Routes.BANKS },
+    { name: 'Contacts', route: Routes.CONTACTS },
   ];
 
   return (

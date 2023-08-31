@@ -9,6 +9,8 @@
   --green2: #2a4628;
   --green3: #2c4d54;
   --green4: #2c4d54;
+  --green5: #024720;
+  --red2: #ff5044;
 
   --transition: all 0.3s ease;
   --buttonPressedTransform: scale(0.95);
@@ -24,7 +26,12 @@
 
   --text-gradient: linear-gradient(92deg, #00ce2c 0%, #aedf23 49.26%, #a3dc00 100%);
 
-  --banner-gradient: linear-gradient(66deg, rgba(0, 0, 0, 1) 0%, rgba(36, 121, 64, 0.3) 52%, rgba(0, 0, 0, 1) 100%);
+  --banner-gradient: linear-gradient(
+    66deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(36, 121, 64, 0.3) 52%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 .app.dark {

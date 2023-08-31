@@ -1,6 +1,8 @@
 @import '@styles/variables.scss';
 @import '@styles/templates.scss';
 
+$fzM: 20px;
+
 .navigation {
   flex: 1 1 auto;
   display: flex;
@@ -42,7 +44,7 @@
     margin-bottom: 40px;
 
     @media (max-width: 600px) {
-      font-size: 20px;
+      font-size: $fzM;
       font-weight: 400;
       letter-spacing: -0.24px;
       margin-bottom: 0px;
@@ -55,15 +57,14 @@
         top: 5px;
         height: 20px;
         width: 20px;
-        background: url('../../../assets//icons/arrow.svg') right center no-repeat;
+        background: url('@assets/icons/arrow.svg') right center no-repeat;
         transition: var(--transition);
       }
     }
   }
 
   &__links {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     font-size: 24px;
     font-weight: 400;
     row-gap: 18px;
@@ -82,7 +83,7 @@
       @extend %buttonActive;
 
       @media (max-width: 600px) {
-        font-size: 20px;
+        font-size: $fzM;
       }
     }
   }

@@ -1,7 +1,7 @@
 import '@styles/index.scss';
 
-import App from '@components/app';
-import ErrorBoundary from '@components/error-boundary';
+import App from '@components/App';
+import ErrorBoundary from '@components/ErrorBoundary';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';

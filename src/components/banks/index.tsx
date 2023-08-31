@@ -1,14 +1,10 @@
 import './index.scss';
 
-import { Map } from '@components/banks/map';
-import UpdateTime from '@components/update-time';
+import { Map } from '@components/Banks/Map';
+import { Search } from '@components/Banks/Search';
+import { IBanksState } from '@components/Banks/types';
+import UpdateTime from '@components/Update-time';
 import { Component } from 'react';
-
-import { Search } from './search';
-
-interface IBanksState {
-  currency: string;
-}
 
 export class Banks extends Component<object, IBanksState> {
   constructor(props: object) {

@@ -1,11 +1,9 @@
-import './index.scss';
-
-import { Banks } from '@components/banks';
-import Banner from '@components/banner';
+import { Banks } from '@components/Banks';
+import Banner from '@components/Banner';
 import { withSection } from '@utils/hocs/with-section';
 import { FC } from 'react';
 
-const CardPage: FC = () => {
+const BanksPage: FC = () => {
   return (
     <div className='card__container'>
       <div className='card__body'>
@@ -16,4 +14,4 @@ const CardPage: FC = () => {
   );
 };
 
-export default withSection(CardPage, 'card', 'card-page');
+export default withSection(BanksPage, 'card', 'card-page');

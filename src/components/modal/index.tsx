@@ -1,18 +1,15 @@
 import './index.scss';
 
-import { Spinner } from '@components/loader';
-import Portal from '@components/portal';
-import { CurrenciesList, ICosts, ICurrencyParams } from '@constants/types';
+import { Spinner } from '@components/Loader';
+import { Select } from '@components/Modal/Select';
+import { IModalProps } from '@components/Modal/types';
+import Portal from '@components/Portal';
+import { CurrenciesList } from '@constants/enums';
+import { ICosts, ICurrencyParams } from '@constants/types';
 import { setModal } from '@store/reducers/app-reducer';
 import { useGetCurrenciesCostsQuery } from '@store/reducers/currencies-api';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC, MouseEvent, useEffect, useState } from 'react';
-
-import { Select } from './select';
-
-interface IModalProps {
-  currency: keyof typeof CurrenciesList;
-}
 
 export const Modal: FC<IModalProps> = ({ currency }) => {
   const { modal, currentCurrency } = useSelectorTyped((store) => store.app);
@@ -46,6 +43,10 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
     };
   }
 
+  function getCashedCosts() {
+    return JSON.parse(localStorage.getItem('costs'));
+  }
+
   useEffect(() => {
     if (!isLoading && costs) {
       const costsData: ICosts = getCashedCosts();
@@ -64,10 +65,6 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
       setPrice(costsData[currentCurrency][currency].value);
     }
   }, [currentCurrency, currency]);
-
-  function getCashedCosts() {
-    return JSON.parse(localStorage.getItem('costs'));
-  }
 
   return (
     <Portal id='modal'>

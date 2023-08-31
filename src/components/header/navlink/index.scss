@@ -8,8 +8,13 @@
     line-height: calc(40 / 20 * 100%);
     user-select: none;
     white-space: nowrap;
-
+    transition: (--transition);
     @extend %buttonHover;
     @extend %buttonActive;
+
+    a.active {
+      color: var(--green);
+      transition: (--transition);
+    }
   }
 }

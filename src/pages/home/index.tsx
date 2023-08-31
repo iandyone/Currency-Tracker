@@ -1,7 +1,7 @@
 import './index.scss';
 
-import Banner from '@components/banner';
-import { Currencies } from '@components/currencies';
+import Banner from '@components/Banner';
+import { Currencies } from '@components/Currencies';
 import { withSection } from '@utils/hocs/with-section';
 import { FC } from 'react';
 

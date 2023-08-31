@@ -1,30 +1,38 @@
 import './index.scss';
 
-import { Diagram } from '@components/diagram';
-import UpdateTime from '@components/update-time';
+import { Diagram } from '@components/Diagram';
+import Portal from '@components/Portal';
+import { CostInput } from '@components/Timeline/CostInput';
+import { Select } from '@components/Timeline/Select';
+import UpdateTime from '@components/Update-time';
 import { ICurrencyGraphState } from '@constants/types';
+import { RootState, store } from '@store/index';
+import { resetDiagramData, setDiagramData } from '@store/reducers/diagram-reducer';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js';
 import { Component } from 'react';
-
-import { CostInput } from './cost-input';
-import { Select } from './select';
+import { connect } from 'react-redux';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export class Timeline extends Component<object, ICurrencyGraphState> {
+interface ITimelineProps {
+  showDiagramModal: boolean;
+}
+
+const dispatch = store.dispatch;
+
+class TimelineComponent extends Component<ITimelineProps, ICurrencyGraphState> {
   private defaultOption = 'Choose the currency';
 
-  constructor(props: object) {
+  constructor(props: ITimelineProps) {
     super(props);
-    this.state = { showGraphButton: false, showGraph: false, costs: {}, requiredValues: 30, option: this.defaultOption };
+    this.state = {
+      showGraph: false,
+      option: this.defaultOption,
+    };
   }
 
-  showGrapgButton = () => {
-    this.setState((prevState) => ({ ...prevState, showGraphButton: true }));
-  };
-
   showGraph = () => {
-    this.setState({ showGraphButton: false, showGraph: true });
+    this.setState({ showGraph: true });
   };
 
   showGraphButton = () => {
@@ -32,24 +40,26 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   };
 
   resetState = (option: string) => {
-    this.setState((prevState) => ({ ...prevState, showGraphButton: false, showGraph: false, option }));
+    this.setState((prevState) => ({
+      ...prevState,
+      showGraph: false,
+      option,
+    }));
+
+    dispatch(resetDiagramData());
   };
 
   setCost = (id: number, value: number) => {
-    const costs = this.state.costs;
+    const costs = Object.assign({}, store.getState().diagram.diagramData);
 
     if (!value) {
       delete costs[id];
-      this.setState((prevState) => ({ ...prevState, costs, showGraphButton: false }));
+      dispatch(setDiagramData(costs));
       return;
     }
 
     costs[id] = value;
-    this.setState((prevState) => ({ ...prevState, costs }));
-
-    if (Object.keys(costs).length === this.state.requiredValues) {
-      this.showGraphButton();
-    }
+    dispatch(setDiagramData(costs));
   };
 
   setOption(option: string) {
@@ -57,8 +67,12 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
   }
 
   render() {
-    const { costs, option, requiredValues, showGraph, showGraphButton } = this.state;
+    const { diagramData, requiredValues } = store.getState().diagram;
+    const { option, showGraph } = this.state;
+    const { showDiagramModal } = this.props;
     const inputItems = new Array(requiredValues).fill(1);
+    const showGraphButton = showDiagramModal && !showGraph;
+    const showInputs = option !== this.defaultOption && !showGraph;
 
     return (
       <div className='timeline' data-testid='timeline'>
@@ -67,7 +81,7 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
           <div className='graph'>
             <Select handlerOnClick={this.resetState} option={option} />
             <div className='cost__body'>
-              {option !== this.defaultOption && !showGraph && (
+              {showInputs && (
                 <div className='cost__content'>
                   {inputItems.map((_, index) => (
                     <CostInput id={index + 1} key={index} setCost={this.setCost} />
@@ -78,14 +92,32 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
 
             {showGraphButton && (
               <button className='cost__button' onClick={this.showGraph} data-testid='timeline-button'>
-                Show graph
+                Show diagram
               </button>
             )}
 
-            {showGraph && <Diagram costs={costs} period={requiredValues} currency={option} />}
+            {showGraph && <Diagram costs={diagramData} period={requiredValues} currency={option} />}
+
+            {showGraphButton && (
+              <Portal id='diagram-modal'>
+                <div className={`diagram-modal ${showGraphButton && 'active'}`}>
+                  The currency diagram was created!
+                </div>
+              </Portal>
+            )}
           </div>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => {
+  const { diagramData, requiredValues } = state.diagram;
+
+  return {
+    showDiagramModal: Object.keys(diagramData).length === requiredValues,
+  };
+};
+
+export const Timeline = connect(mapStateToProps)(TimelineComponent);

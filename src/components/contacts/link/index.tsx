@@ -1,5 +1,3 @@
-import './index.scss';
-
 import { IContact } from '@constants/types';
 import { FC } from 'react';
 

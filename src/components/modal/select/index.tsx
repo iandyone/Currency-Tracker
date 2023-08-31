@@ -1,11 +1,10 @@
 import './index.scss';
 
-import { CurrenciesList } from '@constants/types';
+import { Option } from '@components/Modal/Option';
+import { CurrenciesList } from '@constants/enums';
 import { setCurrentCurrency } from '@store/reducers/app-reducer';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC, useCallback, useState } from 'react';
-
-import { Option } from '../option';
 
 export const Select: FC = () => {
   const { currentCurrency } = useSelectorTyped((store) => store.app);

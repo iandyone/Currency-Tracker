@@ -15,7 +15,6 @@ describe('Currency test', () => {
 
     cy.get('@modal').should('be.visible');
     cy.get('[data-testid=modal-title]').should('contain', 'US Dollar');
-    // cy.get('[data-testid=modal]').click();
 
     cy.get('@cards').contains('Euro').click({ force: true });
 

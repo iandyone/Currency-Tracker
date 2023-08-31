@@ -1,5 +1,8 @@
-import { CurrenciesList, ICurrencyParams, ICurrencyResponce, IGetCurrenciesParams } from '@constants/types';
+import { CurrenciesList } from '@constants/enums';
+import { ICurrencyParams, ICurrencyResponce, IGetCurrenciesParams } from '@constants/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+const currencyApiKey = process.env.REACT_APP_CURRENCY_API_KEY;
 
 export const currenciesApi = createApi({
   reducerPath: 'currenciesApi',
@@ -12,7 +15,7 @@ export const currenciesApi = createApi({
         url: '/latest',
         method: 'GET',
         params: {
-          apikey: process.env.REACT_APP_CURRENCY_API_KEY,
+          apikey: currencyApiKey,
           currencies: currencies,
           base_currency: base || CurrenciesList.BYN,
         },
@@ -23,7 +26,7 @@ export const currenciesApi = createApi({
         url: '/currencies',
         method: 'GET',
         params: {
-          apikey: process.env.REACT_APP_CURRENCY_API_KEY,
+          apikey: currencyApiKey,
           currencies: currencies,
         },
       }),

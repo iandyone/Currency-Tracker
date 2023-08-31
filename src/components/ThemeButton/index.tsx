@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { IThemeButtonProps } from '@constants/types';
+import { IThemeButtonProps, Theme } from '@constants/types';
 import { toggleAppTheme } from '@store/reducers/app-reducer';
 import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC } from 'react';
@@ -15,7 +15,9 @@ export const ThemeButton: FC<IThemeButtonProps> = ({ className }) => {
   };
 
   function handlerOnClick() {
-    dispatch(toggleAppTheme());
+    const newTheme: Theme = theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    dispatch(toggleAppTheme(newTheme));
   }
 
   return (

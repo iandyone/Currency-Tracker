@@ -5,12 +5,46 @@
   @extend %pageContent;
 
   &__container {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
   }
 }
 
 .graph {
-  display: flex;
-  flex-direction: column;
+  @extend %flexColumn;
+}
+
+.diagram-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+  color: var(--modal-text);
+  background-color: var(--green);
+  border-color: var(--modal-text);
+  transform: translateY(-110%);
+  transition: var(--transition);
+
+  &.active {
+    position: fixed;
+    transition: var(--transition);
+    animation: show-hide 3s ease-in-out forwards;
+  }
+
+  @keyframes show-hide {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateY(-110%);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
 }

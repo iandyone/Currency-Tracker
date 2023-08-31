@@ -1,12 +1,7 @@
 import './index.scss';
 
-import { handlerWithStringProps } from '@constants/types';
+import { IOptionProps } from '@components/Banks/Search/Option/types';
 import { MouseEvent, PureComponent } from 'react';
-
-interface IOptionProps {
-  currency: string;
-  handler: handlerWithStringProps;
-}
 
 export class Option extends PureComponent<IOptionProps, object> {
   constructor(props: IOptionProps) {

@@ -1,15 +1,8 @@
 import './index.scss';
 
-import { Spinner } from '@components/loader';
-import React, { ReactNode, Suspense } from 'react';
-
-interface ErrorBoundaryProps {
-  children: ReactNode;
-}
-
-interface ErrorBoundaryState {
-  error: boolean | string;
-}
+import { ErrorBoundaryProps, ErrorBoundaryState } from '@components/ErrorBoundary/types';
+import { Spinner } from '@components/Loader';
+import React, { Suspense } from 'react';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

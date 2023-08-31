@@ -1,7 +1,7 @@
 import './index.scss';
 
-import Banner from '@components/banner';
-import { Contacts } from '@components/contacts';
+import Banner from '@components/Banner';
+import { Contacts } from '@components/Contacts';
 import { withSection } from '@utils/hocs/with-section';
 import { FC } from 'react';
 

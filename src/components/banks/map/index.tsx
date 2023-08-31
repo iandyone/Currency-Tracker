@@ -1,14 +1,13 @@
 import './index.scss';
 
-import { BankMaps, CurrenciesList } from '@constants/types';
+import { IMapProps } from '@components/Banks/Map/types';
+import { BankMaps } from '@constants/enums';
+import { checkBanksWithCurrencies } from '@utils/helpers/check-banks-with-currenciess';
 import mapboxgl from 'mapbox-gl';
 import { createRef, PureComponent } from 'react';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKKEN;
 
-interface IMapProps {
-  currency: string;
-}
 export class Map extends PureComponent<IMapProps, object> {
   private mapContainer: React.RefObject<HTMLDivElement>;
   private map: mapboxgl.Map;
@@ -27,37 +26,15 @@ export class Map extends PureComponent<IMapProps, object> {
       style: BankMaps.ALL,
       zoom: data.zoom,
     });
+
+    const navControl = new mapboxgl.NavigationControl();
+    this.map.addControl(navControl, 'top-right');
   }
 
   componentDidUpdate() {
-    this.checkBanksWithCurrencies();
+    const mapStyle = checkBanksWithCurrencies(this.props.currency);
+    this.map.setStyle(mapStyle);
   }
-
-  checkBanksWithCurrencies = () => {
-    switch (this.props.currency) {
-      case CurrenciesList.BYN:
-      case CurrenciesList.USD:
-      case CurrenciesList.EUR:
-      case CurrenciesList.PLN:
-        this.map.setStyle(BankMaps.ALL);
-        break;
-
-      case CurrenciesList.AUD:
-      case CurrenciesList.GBP:
-      case CurrenciesList.CHF:
-        this.map.setStyle(BankMaps.ALPHA);
-        break;
-
-      case CurrenciesList.CNY:
-      case CurrenciesList.JPY:
-      case CurrenciesList.UAH:
-        this.map.setStyle(BankMaps.PRIOR);
-        break;
-
-      default:
-        this.map.setStyle(BankMaps.NONE);
-    }
-  };
 
   render() {
     return (

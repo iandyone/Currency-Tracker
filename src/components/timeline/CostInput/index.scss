@@ -2,17 +2,21 @@
 @import '@styles/templates.scss';
 
 .cost {
-  display: flex;
-  flex-direction: column;
+  @extend %flexColumn;
   row-gap: 10px;
 
   &__title {
     color: var(--timeline-cost-text);
+    transition: var(--transition);
+
+    &.active {
+      color: var(--red2);
+      transition: var(--transition);
+    }
   }
 
   &__body {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     row-gap: 30px;
     margin-bottom: 20px;
   }
@@ -23,6 +27,12 @@
     background-color: var(--timeline-select-bg);
     color: var(--timeline-select-text);
     padding-left: 10px;
+    transition: var(--transition);
+
+    &.active {
+      border: 1px solid var(--red2);
+      transition: var(--transition);
+    }
   }
 
   &__content {

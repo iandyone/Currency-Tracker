@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { IFooterColumn } from '@constants/types';
+import { IFooterColumn } from '@components/Footer/types';
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 

@@ -1,24 +1,26 @@
 @import '@styles/variables.scss';
 @import '@styles/templates.scss';
 
+$fsM: 20px;
+$fsL: 24px;
+
 .footer {
   padding: 40px 0px;
 
   &_copyright {
     text-align: center;
-    font-size: 24px;
+    font-size: $fsL;
     line-height: 150%;
     color: var(--footer-copyright);
     transition: var(--transition);
 
     @media (max-width: 480px) {
-      font-size: 20px;
+      font-size: $fsM;
     }
   }
 
   &__body {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     row-gap: 55px;
   }
 
@@ -79,12 +81,12 @@
 
     @media (max-width: 480px) {
       margin-bottom: 0px;
-      font-size: 20px;
+      font-size: $fsM;
     }
   }
 
   &__text {
-    font-size: 24px;
+    font-size: $fsL;
     font-weight: 300;
     line-height: 150%;
     color: var(--footer-text);

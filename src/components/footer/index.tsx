@@ -1,10 +1,9 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
-import { IFooterColumn } from '@constants/types';
+import { LinksColumn } from '@components/Footer/LinksColumn';
+import { IFooterColumn } from '@components/Footer/types';
 import { FC } from 'react';
-
-import { LinksColumn } from './links-column';
 
 export const Footer: FC = () => {
   const linkColumns: IFooterColumn[] = [
@@ -42,8 +41,9 @@ export const Footer: FC = () => {
                 <h3 className='footer__title'>Modsen Currency Tracker</h3>
               </div>
               <p className='footer__text'>
-                Since then, the company has grown organically to. Starsup is the world&apos;s largest trading platform, with $12 billion worth of
-                currency trading and 500,000 tickets sold daily to tens of thousands of traders worldwide.
+                Since then, the company has grown organically to. Starsup is the world&apos;s largest trading
+                platform, with $12 billion worth of currency trading and 500,000 tickets sold daily to tens of
+                thousands of traders worldwide.
               </p>
             </div>
             <div className='footer__navigation navigation'>

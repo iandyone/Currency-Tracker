@@ -1,7 +1,7 @@
 import './index.scss';
 
-import Banner from '@components/banner';
-import { Timeline } from '@components/timeline';
+import Banner from '@components/Banner';
+import { Timeline } from '@components/Timeline';
 import { withSection } from '@utils/hocs/with-section';
 import { Component } from 'react';
 

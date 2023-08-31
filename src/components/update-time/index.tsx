@@ -6,9 +6,9 @@ const UpdateTime: FC = () => {
   const [updateTime] = useState(getUpdateTime);
 
   function getUpdateTime() {
-    const date = new Date(Date.now());
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+    const updateTime = new Date(Number(localStorage.getItem('update')));
+    const hours = updateTime.getHours();
+    const minutes = updateTime.getMinutes();
 
     return `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
   }

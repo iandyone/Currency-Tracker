@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { Spinner } from '@components/loader';
+import { Spinner } from '@components/Loader';
 import { FC, memo } from 'react';
 
 const Loader: FC = () => {

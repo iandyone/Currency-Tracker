@@ -1,6 +1,8 @@
 import './index.scss';
 
-import { CurrenciesList, ICurrencyParams, ISelectProps, ISelectState } from '@constants/types';
+import { ISelectProps, ISelectState } from '@components/Timeline/Select/types';
+import { CurrenciesList } from '@constants/enums';
+import { ICurrencyParams } from '@constants/types';
 import { PureComponent } from 'react';
 
 export class Select extends PureComponent<ISelectProps, ISelectState> {
@@ -31,13 +33,20 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
     return (
       <>
         <div className='current' data-testid='timeline-select'>
-          <div className={`current__title ${showMenu && 'active'}`} onClick={this.handlerOnClickTitle} data-testid='timeline-currency'>
+          <div
+            className={`current__title ${showMenu && 'active'}`}
+            onClick={this.handlerOnClickTitle}
+            data-testid='timeline-currency'>
             {this.props.option}
           </div>
           <ul className='current__options'>
             {showMenu &&
               currencies.map((option) => (
-                <li className='current__option' onClick={this.handlerOnClickOption(option)} key={option} data-testid='timeline-select-option'>
+                <li
+                  className='current__option'
+                  onClick={this.handlerOnClickOption(option)}
+                  key={option}
+                  data-testid='timeline-select-option'>
                   {option}
                 </li>
               ))}

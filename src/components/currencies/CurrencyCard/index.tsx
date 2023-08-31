@@ -1,18 +1,9 @@
 import './index.scss';
 
-import { handlerWithStringProps } from '@constants/types';
-import { FC } from 'react';
+import { ICurrencyCardParams } from '@components/Currencies/CurrencyCard/types';
+import { FC, memo } from 'react';
 
-export interface ICurrencyCardParams {
-  price: number;
-  name: string;
-  symbol: string;
-  index: number;
-  currency: string;
-  onClick: handlerWithStringProps;
-}
-
-export const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
+const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
   function handlerOnClick() {
     onClick(currency);
   }
@@ -29,3 +20,5 @@ export const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, ind
     </div>
   );
 };
+
+export default memo(CurrencyCard);

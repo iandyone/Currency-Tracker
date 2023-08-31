@@ -4,14 +4,13 @@ import FacebookIcon from '@assets/icons/facebook.svg';
 import InstagramIcon from '@assets/icons/instagram.svg';
 import LinkedinIcon from '@assets/icons/linkedin.svg';
 import TwitterIcon from '@assets/icons/twitter.svg';
+import { Link } from '@components/Contacts/Link';
 import { IContact, IMedia } from '@constants/types';
 import { FC } from 'react';
 
-import { Link } from './link';
-
 export const Contacts: FC = () => {
   const contacts: IContact[] = [
-    { contact: 'Email', linkName: 'contact@modsen-sowtware.com', linkType: 'mailto:' },
+    { contact: 'Email', linkName: 'contact@modsen-sof tware.com', linkType: 'mailto:' },
     { contact: 'Phone', linkName: '+48501157180', linkType: 'tel:' },
     { contact: 'Stefana Okrzei 1a/10' },
     { contact: 'Warsaw, Poland' },

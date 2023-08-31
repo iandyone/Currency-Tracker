@@ -5,8 +5,7 @@
   @extend %pageContent;
 
   &__container {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
   }
 
   &__list {

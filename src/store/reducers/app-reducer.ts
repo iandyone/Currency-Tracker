@@ -1,4 +1,5 @@
-import { CurrenciesList, Theme } from '@constants/types';
+import { CurrenciesList } from '@constants/enums';
+import { Theme } from '@constants/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IAppSLiceState {
@@ -8,7 +9,7 @@ interface IAppSLiceState {
 }
 
 const initialState: IAppSLiceState = {
-  theme: 'dark',
+  theme: (localStorage.getItem('theme') as Theme) ?? 'dark',
   modal: false,
   currentCurrency: CurrenciesList.BYN,
 };
@@ -17,8 +18,8 @@ const appSlice = createSlice({
   name: 'appReducer',
   initialState,
   reducers: {
-    toggleAppTheme(state) {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    toggleAppTheme(state, action: PayloadAction<Theme>) {
+      state.theme = action.payload;
     },
 
     setCurrentCurrency(state, action: PayloadAction<keyof typeof CurrenciesList>) {
@@ -27,7 +28,6 @@ const appSlice = createSlice({
 
     setModal(state, action: PayloadAction<boolean>) {
       state.modal = action.payload;
-
       document.body.style.overflow = action.payload ? 'hidden' : 'auto';
     },
   },

@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { IOption } from '@constants/types';
+import { IOption } from '@components/Modal/Option/types';
 import { FC, MouseEvent } from 'react';
 
 export const Option: FC<IOption> = ({ currency, onCLick }) => {

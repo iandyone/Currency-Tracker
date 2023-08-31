@@ -20,7 +20,7 @@
     transition: var(--transition);
     border: 1px solid var(--currency-card-border);
     background:
-      url('../../../assets/icons/search.svg') 95% no-repeat,
+      url('@assets/icons/search.svg') 95% no-repeat,
       var(--banks-bg);
 
     &:focus {

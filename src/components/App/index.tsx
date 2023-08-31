@@ -1,27 +1,16 @@
 import './index.scss';
 
+import { routes } from '@constants/routes';
 import { useSelectorTyped } from '@utils/hooks/redux-hooks';
 import { FC, lazy, memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Loader from './loader';
+import Loader from './Loader';
 
-const Layout = lazy(() => import('@components/layout'));
-const CardPage = lazy(() => import('@pages/card'));
-const ContactsPage = lazy(() => import('@pages/contacts'));
-const ErrorPage = lazy(() => import('@pages/error'));
-const HomePage = lazy(() => import('@pages/home'));
-const TimelinePage = lazy(() => import('@pages/timeline'));
+const Layout = lazy(() => import('@components/Layout'));
 
 const App: FC = () => {
   const { theme } = useSelectorTyped((store) => store.app);
-  const routes = [
-    { path: '/', element: HomePage, index: true },
-    { path: '/timeline', element: TimelinePage, index: false },
-    { path: '/card', element: CardPage, index: false },
-    { path: '/contacts', element: ContactsPage, index: false },
-    { path: '*', element: ErrorPage, index: false },
-  ];
 
   return (
     <div className={`app ${theme}`} data-testid='app'>
