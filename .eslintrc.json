@@ -29,7 +29,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "simple-import-sort", "import"],
   "rules": {
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
@@ -43,6 +43,9 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "simple-import-sort/imports": "warn",
-    "simple-import-sort/exports": "warn"
+    "simple-import-sort/exports": "warn",
+    "import/first": "warn",
+    "import/newline-after-import": "warn",
+    "import/no-duplicates": "error"
   }
 }

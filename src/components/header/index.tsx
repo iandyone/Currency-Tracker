@@ -1,10 +1,10 @@
 import './index.scss';
 
+import { INavLink } from '@appTypes/index';
 import Logo from '@assets/icons/logo.webp';
 import { NavLink } from '@components/Header/Navlink';
 import { ThemeButton } from '@components/ThemeButton';
 import { Routes } from '@constants/enums';
-import { INavLink } from '@constants/types';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 

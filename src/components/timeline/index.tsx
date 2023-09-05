@@ -1,33 +1,30 @@
 import './index.scss';
 
-import Portal from '@components/Portal';
+import { ICurrencyGraphState } from '@appTypes/index';
 import { CostInput } from '@components/Timeline/CostInput';
 import { Diagram } from '@components/Timeline/Diagram';
+import { Modal } from '@components/Timeline/Modal';
 import { Select } from '@components/Timeline/Select';
-import UpdateTime from '@components/Update-time';
-import { ICurrencyGraphState } from '@constants/types';
-import { RootState, store } from '@store/index';
-import { resetDiagramData, setDiagramData } from '@store/reducers/diagram-reducer';
+import { UpdateTime } from '@components/UpdateTime';
+import { diagramObserver } from '@observers/diagram';
+import { store } from '@store/index';
+import { resetDiagramData, setDiagramData } from '@store/reducers/diagramReducer';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js';
 import { Component } from 'react';
-import { connect } from 'react-redux';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-interface ITimelineProps {
-  showDiagramModal: boolean;
-}
-
 const dispatch = store.dispatch;
 
-class TimelineComponent extends Component<ITimelineProps, ICurrencyGraphState> {
+export class Timeline extends Component<object, ICurrencyGraphState> {
   private defaultOption = 'Choose the currency';
 
-  constructor(props: ITimelineProps) {
+  constructor(props: object) {
     super(props);
     this.state = {
-      showGraph: false,
       option: this.defaultOption,
+      showGraph: false,
+      isDiagramCreated: false,
     };
   }
 
@@ -50,28 +47,44 @@ class TimelineComponent extends Component<ITimelineProps, ICurrencyGraphState> {
   };
 
   setCost = (id: number, value: number) => {
-    const costs = Object.assign({}, store.getState().diagram.diagramData);
+    const { diagramData, requiredValues } = store.getState().diagram;
+    const costs = Object.assign({}, diagramData);
 
     if (!value) {
       delete costs[id];
       dispatch(setDiagramData(costs));
+      diagramObserver.notify(false);
       return;
     }
 
     costs[id] = value;
     dispatch(setDiagramData(costs));
+
+    const isDiagram = Object.keys(costs).length === requiredValues;
+    diagramObserver.notify(isDiagram);
   };
 
   setOption(option: string) {
     this.setState((prevState) => ({ ...prevState, option }));
   }
 
+  checkDiagram = (isDiagramCreated: boolean) => {
+    this.setState((prevState) => ({ ...prevState, isDiagramCreated: isDiagramCreated }));
+  };
+
+  componentDidMount() {
+    diagramObserver.subscribe(this.checkDiagram);
+  }
+
+  componentWillUnmount() {
+    diagramObserver.unsubscribe(this.checkDiagram);
+  }
+
   render() {
     const { diagramData, requiredValues } = store.getState().diagram;
-    const { option, showGraph } = this.state;
-    const { showDiagramModal } = this.props;
+    const { option, showGraph, isDiagramCreated } = this.state;
     const inputItems = new Array(requiredValues).fill(1);
-    const showGraphButton = showDiagramModal && !showGraph;
+    const showGraphButton = isDiagramCreated && !showGraph;
     const showInputs = option !== this.defaultOption && !showGraph;
 
     return (
@@ -98,26 +111,10 @@ class TimelineComponent extends Component<ITimelineProps, ICurrencyGraphState> {
 
             {showGraph && <Diagram costs={diagramData} period={requiredValues} currency={option} />}
 
-            {showGraphButton && (
-              <Portal id='diagram-modal'>
-                <div className={`diagram-modal ${showGraphButton && 'active'}`}>
-                  The currency diagram was created!
-                </div>
-              </Portal>
-            )}
+            {showGraphButton && <Modal showGraphButton />}
           </div>
         </div>
       </div>
     );
   }
 }
-
-const mapStateToProps = (state: RootState) => {
-  const { diagramData, requiredValues } = state.diagram;
-
-  return {
-    showDiagramModal: Object.keys(diagramData).length === requiredValues,
-  };
-};
-
-export const Timeline = connect(mapStateToProps)(TimelineComponent);

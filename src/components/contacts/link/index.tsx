@@ -1,8 +1,8 @@
-import { IContact } from '@constants/types';
-import { FC } from 'react';
+import { IContact } from '@appTypes/index';
+import { FC, memo } from 'react';
 
-export const Link: FC = ({ contact, linkName, linkType }: IContact) => {
-  const href = linkType + linkName;
+const LinkComponent: FC = ({ contact, linkName, linkType }: IContact) => {
+  const href = linkType ? linkType + linkName : linkName;
 
   return (
     <li className='contacts__link'>
@@ -11,3 +11,5 @@ export const Link: FC = ({ contact, linkName, linkType }: IContact) => {
     </li>
   );
 };
+
+export const Link = memo(LinkComponent);

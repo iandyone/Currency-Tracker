@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { ICostInputProps, ICostInputState } from '@constants/types';
+import { ICostInputProps, ICostInputState } from '@appTypes/index';
 import { ChangeEvent, Component } from 'react';
 
 export class CostInput extends Component<ICostInputProps, ICostInputState> {

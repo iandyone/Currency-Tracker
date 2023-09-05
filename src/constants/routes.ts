@@ -1,5 +1,5 @@
 import { LazyExoticComponent, ReactNode, lazy } from 'react';
-import { IRoutesList } from './types';
+import { IRoutesList } from '../types';
 import { Routes } from './enums';
 
 export const BanksPage = lazy(() => import('@pages/banks'));

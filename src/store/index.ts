@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import appReducer from './reducers/app-reducer';
-import { currenciesApi } from './reducers/currencies-api';
-import diagramReducer from './reducers/diagram-reducer';
+import { currenciesApi } from '@store/reducers';
+import appReducer from '@store/reducers/appReducer';
+import diagramReducer from '@store/reducers/diagramReducer';
 
 export const store = configureStore({
   reducer: {
@@ -13,4 +12,4 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(currenciesApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type rootState = ReturnType<typeof store.getState>;

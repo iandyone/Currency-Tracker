@@ -1,14 +1,14 @@
 import './index.scss';
 
+import { ICosts, ICurrencyParams } from '@appTypes/index';
+import { Select } from '@components/Currencies/Modal/Select';
+import { IModalProps } from '@components/Currencies/Modal/types';
 import { Spinner } from '@components/Loader';
-import { Select } from '@components/Modal/Select';
-import { IModalProps } from '@components/Modal/types';
 import Portal from '@components/Portal';
 import { CurrenciesList } from '@constants/enums';
-import { ICosts, ICurrencyParams } from '@constants/types';
-import { setModal } from '@store/reducers/app-reducer';
-import { useGetCurrenciesCostsQuery } from '@store/reducers/currencies-api';
-import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
+import { useDispatchTyped, useSelectorTyped } from '@hooks/reduxHooks';
+import { setModal, useGetCurrenciesCostsQuery } from '@store/reducers';
+import { togglePageScroll } from '@utils/helpers/togglePageScroll';
 import { FC, MouseEvent, useEffect, useState } from 'react';
 
 export const Modal: FC<IModalProps> = ({ currency }) => {
@@ -18,7 +18,7 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
   const { name, symbol } = currenciesData.data[currency];
 
   const dispatch = useDispatchTyped();
-  const [price, setPrice] = useState<number>(1);
+  const [price, setPrice] = useState(1);
   const { costsSkip } = getSkipConditions();
   const {
     data: costs,
@@ -29,6 +29,7 @@ export const Modal: FC<IModalProps> = ({ currency }) => {
 
   function handlerOnClick() {
     dispatch(setModal(false));
+    togglePageScroll(true);
   }
 
   function handlerOnClickContent(e: MouseEvent<HTMLElement>) {

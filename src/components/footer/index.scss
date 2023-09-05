@@ -1,21 +1,18 @@
 @import '@styles/variables.scss';
 @import '@styles/templates.scss';
 
-$fsM: 20px;
-$fsL: 24px;
-
 .footer {
   padding: 40px 0px;
 
   &_copyright {
     text-align: center;
-    font-size: $fsL;
+    font-size: var(--fz-heading-small);
     line-height: 150%;
     color: var(--footer-copyright);
     transition: var(--transition);
 
     @media (max-width: 480px) {
-      font-size: $fsM;
+      font-size: var(--fz-x-large);
     }
   }
 
@@ -71,23 +68,23 @@ $fsL: 24px;
   }
 
   &__title {
-    font-family: Poppins;
-    font-size: 26px;
+    font-family: var(--font-main);
+    font-size: var(--fz-heading-medium);
     font-style: normal;
-    font-weight: 600;
+    font-weight: var(--fw-semi-bold);
     line-height: normal;
     margin-bottom: 20px;
     @extend %gradientText;
 
     @media (max-width: 480px) {
       margin-bottom: 0px;
-      font-size: $fsM;
+      font-size: var(--fz-x-large);
     }
   }
 
   &__text {
-    font-size: $fsL;
-    font-weight: 300;
+    font-size: var(--fz-heading-small);
+    font-weight: var(--fw-light);
     line-height: 150%;
     color: var(--footer-text);
     transition: var(--transition);

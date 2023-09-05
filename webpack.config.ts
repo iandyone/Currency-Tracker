@@ -12,10 +12,12 @@ export default (env: BuildEnv): webpack.Configuration => {
     '@constants': path.resolve(__dirname, 'src', 'constants'),
     '@styles': path.resolve(__dirname, 'src', 'styles'),
     '@utils': path.resolve(__dirname, 'src', 'utils'),
-    '@hooks': path.resolve(__dirname, 'src', 'utils', 'hooks'),
+    '@hooks': path.resolve(__dirname, 'src', 'hooks'),
     '@store': path.resolve(__dirname, 'src', 'store'),
     '@reducers': path.resolve(__dirname, 'src', 'store', 'reducers'),
     '@pages': path.resolve(__dirname, 'src', 'pages'),
+    '@appTypes': path.resolve(__dirname, 'src', 'types'),
+    '@observers': path.resolve(__dirname, 'src', 'observers'),
     '@config': path.resolve(__dirname, 'config'),
   };
 

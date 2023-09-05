@@ -1,8 +1,6 @@
-import './index.scss';
-
 import Banner from '@components/Banner';
 import { Contacts } from '@components/Contacts';
-import { withSection } from '@utils/hocs/with-section';
+import { withSection } from '@utils/hocs/withSection';
 import { FC } from 'react';
 
 const ContactsPage: FC = () => {

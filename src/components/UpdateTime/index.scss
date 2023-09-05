@@ -2,8 +2,8 @@
   display: inline-block;
   color: var(--update-time);
   transition: var(--transition);
-  font-size: 32px;
-  font-weight: 300;
+  font-size: var(--fz-heading-xx-large);
+  font-weight: var(--fw-light);
   line-height: 200%;
   text-align: center;
   margin-bottom: 65px;
@@ -19,18 +19,18 @@
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background: url('@assets/icons/upadate-time.svg') center center no-repeat;
+    background: url('@assets/icons/upadateTime.svg') center center no-repeat;
     border-radius: 50%;
     animation: link 2s ease-in-out infinite;
   }
 
   @media (max-width: 992px) {
-    font-size: 26px;
+    font-size: var(--fz-heading-medium);
     margin-bottom: 40px;
   }
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: var(--fz-large);
     margin-bottom: 20px;
   }
 }

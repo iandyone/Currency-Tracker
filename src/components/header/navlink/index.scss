@@ -4,7 +4,7 @@
 .header {
   &__link {
     color: var(--navLinkColor);
-    font-weight: 300;
+    font-weight: var(--fw-light);
     line-height: calc(40 / 20 * 100%);
     user-select: none;
     white-space: nowrap;

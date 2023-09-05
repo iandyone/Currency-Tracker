@@ -1,11 +1,13 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
+import { footerData } from '@components/Footer/config';
 import { LinksColumn } from '@components/Footer/LinksColumn';
 import { IFooterColumn } from '@components/Footer/types';
 import { FC } from 'react';
 
 export const Footer: FC = () => {
+  const { copyright, text, title } = footerData;
   const linkColumns: IFooterColumn[] = [
     {
       column: 'Home',
@@ -38,13 +40,9 @@ export const Footer: FC = () => {
             <div className='footer__info'>
               <div className='footer__heading'>
                 <img src={Logo} alt='heading-logo' />
-                <h3 className='footer__title'>Modsen Currency Tracker</h3>
+                <h3 className='footer__title'>{title}</h3>
               </div>
-              <p className='footer__text'>
-                Since then, the company has grown organically to. Starsup is the world&apos;s largest trading
-                platform, with $12 billion worth of currency trading and 500,000 tickets sold daily to tens of
-                thousands of traders worldwide.
-              </p>
+              <p className='footer__text'>{text}</p>
             </div>
             <div className='footer__navigation navigation'>
               {linkColumns.map((column) => (
@@ -52,7 +50,7 @@ export const Footer: FC = () => {
               ))}
             </div>
           </div>
-          <div className='footer_copyright'>Modsen © 2023-2024, All Rights Reserved</div>
+          <div className='footer_copyright'>{copyright}</div>
         </div>
       </div>
     </footer>

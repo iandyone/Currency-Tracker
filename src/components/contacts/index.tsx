@@ -1,11 +1,11 @@
 import './index.scss';
 
+import { IContact, IMedia } from '@appTypes/index';
 import FacebookIcon from '@assets/icons/facebook.svg';
 import InstagramIcon from '@assets/icons/instagram.svg';
 import LinkedinIcon from '@assets/icons/linkedin.svg';
 import TwitterIcon from '@assets/icons/twitter.svg';
 import { Link } from '@components/Contacts/Link';
-import { IContact, IMedia } from '@constants/types';
 import { FC } from 'react';
 
 export const Contacts: FC = () => {

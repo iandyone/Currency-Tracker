@@ -36,8 +36,8 @@ $fzM: 20px;
   }
 
   &__title {
-    font-size: 28px;
-    font-weight: 400;
+    font-size: var(--fz-heading-large);
+    font-weight: var(--fw-normal);
     line-height: 150%;
     color: var(--footer-title);
     transition: var(--transition);
@@ -45,7 +45,7 @@ $fzM: 20px;
 
     @media (max-width: 600px) {
       font-size: $fzM;
-      font-weight: 400;
+      font-weight: var(--fw-normal);
       letter-spacing: -0.24px;
       margin-bottom: 0px;
       position: relative;
@@ -65,8 +65,8 @@ $fzM: 20px;
 
   &__links {
     @extend %flexColumn;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: var(--fz-heading-small);
+    font-weight: var(--fw-normal);
     row-gap: 18px;
     color: var(--footer-links);
     transition: height 0.3s ease;

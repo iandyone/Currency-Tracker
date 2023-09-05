@@ -1,9 +1,19 @@
 import './index.scss';
 
+import { currencyCardData } from '@components/Currencies/CurrencyCard/config';
 import { ICurrencyCardParams } from '@components/Currencies/CurrencyCard/types';
 import { FC, memo } from 'react';
 
-const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onClick, currency }) => {
+const CurrencyCardComponent: FC<ICurrencyCardParams> = ({
+  name,
+  price,
+  symbol,
+  index,
+  onClick,
+  currency,
+}) => {
+  const { baseCurrency } = currencyCardData;
+
   function handlerOnClick() {
     onClick(currency);
   }
@@ -14,11 +24,11 @@ const CurrencyCard: FC<ICurrencyCardParams> = ({ name, price, symbol, index, onC
       <div className='currency__content'>
         <h4 className='currency__title'>{name}</h4>
         <p className='currency__price'>
-          1 BYN = {price.toFixed(5)} {symbol}
+          {baseCurrency} {price.toFixed(5)} {symbol}
         </p>
       </div>
     </div>
   );
 };
 
-export default memo(CurrencyCard);
+export const CurrencyCard = memo(CurrencyCardComponent);

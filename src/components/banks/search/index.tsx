@@ -15,17 +15,22 @@ export class Search extends PureComponent<ISearchProps, ISearchState> {
 
   handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
-    const shouldOptionsBeVisible = Boolean(value.length);
-    const results = this.currencies.filter((currency) => currency.toLowerCase().includes(value));
+    const currenciesList = this.currencies.filter((currency) => currency.toLowerCase().includes(value));
+
+    if (!currenciesList.length) {
+      currenciesList.push('Not Found');
+    }
 
     this.setState({
       value: e.target.value,
-      searchResult: results,
-      showOptions: results.length ? shouldOptionsBeVisible : false,
+      searchResult: currenciesList,
+      showOptions: Boolean(value.length),
     });
   };
 
   handlerOnClickOption = (currency: string) => {
+    if (!Object.keys(CurrenciesList).includes(currency)) return;
+
     this.setState((prevState) => ({ ...prevState, showOptions: false, value: currency }));
     this.props.handlerOnClick(currency);
   };

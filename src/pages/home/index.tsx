@@ -1,8 +1,6 @@
-import './index.scss';
-
 import Banner from '@components/Banner';
 import { Currencies } from '@components/Currencies';
-import { withSection } from '@utils/hocs/with-section';
+import { withSection } from '@utils/hocs/withSection';
 import { FC } from 'react';
 
 const HomePage: FC = () => {

@@ -1,8 +1,8 @@
 import './index.scss';
 
-import { IThemeButtonProps, Theme } from '@constants/types';
-import { toggleAppTheme } from '@store/reducers/app-reducer';
-import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
+import { IThemeButtonProps, Theme } from '@appTypes/index';
+import { useDispatchTyped, useSelectorTyped } from '@hooks/reduxHooks';
+import { toggleAppTheme } from '@store/reducers';
 import { FC } from 'react';
 
 export const ThemeButton: FC<IThemeButtonProps> = ({ className }) => {

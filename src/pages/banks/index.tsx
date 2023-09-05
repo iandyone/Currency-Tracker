@@ -1,6 +1,6 @@
 import { Banks } from '@components/Banks';
 import Banner from '@components/Banner';
-import { withSection } from '@utils/hocs/with-section';
+import { withSection } from '@utils/hocs/withSection';
 import { FC } from 'react';
 
 const BanksPage: FC = () => {

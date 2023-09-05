@@ -18,10 +18,12 @@
       "@constants/*": ["./src/constants/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/utils/hooks/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@store/*": ["./src/store/*"],
       "@reducers/*": ["./src/store/reducers/*"],
       "@pages/*": ["./src/pages/*"],
+      "@appTypes/*": ["./src/types/*"],
+      "@observers/*": ["./src/observers/*"],
       "@config/*": ["./config/*"]
     }
   },

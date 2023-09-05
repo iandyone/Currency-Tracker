@@ -1,4 +1,4 @@
-import { withSection } from '@utils/hocs/with-section';
+import { withSection } from '@utils/hocs/withSection';
 import { FC } from 'react';
 
 const ErrorPage: FC = () => {

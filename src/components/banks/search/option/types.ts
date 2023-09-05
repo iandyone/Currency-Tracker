@@ -1,4 +1,4 @@
-import { handlerWithStringProps } from '@constants/types';
+import { handlerWithStringProps } from '@appTypes/index';
 
 export interface IOptionProps {
   currency: string;

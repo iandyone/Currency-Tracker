@@ -32,8 +32,8 @@ body {
   width: 100%;
   font-size: 100%;
   line-height: 1;
-  font-weight: 400;
-  font-family: var(--Poppins);
+  font-weight: var(--fw-normal);
+  font-family: var(--font-main);
   color: var(--white2);
   background-color: var(--bg);
   scroll-behavior: smooth;
@@ -87,7 +87,7 @@ h4,
 h5,
 h6 {
   font-size: inherit;
-  font-weight: 400;
+  font-weight: var(--fw-normal);
 }
 
 input::-webkit-outer-spin-button,

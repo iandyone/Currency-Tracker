@@ -2,16 +2,18 @@
 @import '@styles/templates.scss';
 
 .current {
-  font-size: 25px;
+  font-size: var(--fz-heading-small);
   width: 100%;
   max-width: 300px;
   line-height: normal;
   margin-bottom: 20px;
 
   &__title {
-    font-weight: 500;
-    position: relative;
+    font-weight: var(--fw-medium);
     color: var(--timeline-cost-text);
+    transition: var(--transition);
+    position: relative;
+    padding-left: 10px;
 
     &:hover {
       cursor: pointer;
@@ -34,7 +36,7 @@
     }
 
     @media (max-width: 480px) {
-      font-size: 20px;
+      font-size: var(--fz-x-large);
     }
   }
 
@@ -42,15 +44,20 @@
     position: absolute;
     width: 100%;
     max-width: 300px;
-    background-color: var(--black);
+    background-color: var(--banks-bg);
+    color: var(--banks-text);
+    transition: var(--transition);
     overflow: auto;
     z-index: 150;
   }
 
   &__option {
-    font-size: 18px;
-    border-bottom: 1px solid var(--gray2);
-    padding: 10px 0px;
+    font-size: var(--fz-large);
+    padding: 10px 10px 0 10px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--gray2);
+    }
 
     &:hover {
       transition: var(--transition);

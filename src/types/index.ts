@@ -1,11 +1,10 @@
 import { LazyExoticComponent, ReactElement, SVGProps } from 'react';
-import { CurrenciesList } from './enums';
+import { CurrenciesList } from '../constants/enums';
 
 export type Theme = 'light' | 'dark';
-
 export type handlerWithStringProps = (name: string) => void;
-
 export type handlerWithSVGProps = (props: SVGProps<SVGElement>) => ReactElement;
+export type subscriber = (isDiagramCreated: boolean) => void;
 
 export interface INavLink {
   name: string;
@@ -64,7 +63,7 @@ export interface ICosts {
 export interface IContact {
   contact: string;
   linkName?: string;
-  linkType?: string;
+  linkType?: 'tel:' | 'mailto:';
 }
 
 export interface IMedia {
@@ -86,10 +85,17 @@ export interface ICostInputState {
 export interface ICurrencyGraphState {
   showGraph: boolean;
   option: string;
+  isDiagramCreated: boolean;
 }
 
 export interface IRoutesList {
   path: string;
   element: LazyExoticComponent<any>;
   index: boolean;
+}
+
+export interface IDiagramObserver {
+  subscribe(sub: subscriber): void;
+  unsubscribe(sub: subscriber): void;
+  notify(isDiagramCreated: boolean): void;
 }

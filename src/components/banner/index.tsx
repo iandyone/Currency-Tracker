@@ -1,11 +1,11 @@
 import './index.scss';
 
 import Logo from '@assets/icons/logo.webp';
-import BannerContent from '@components/Banner/config';
+import { bannerData } from '@components/Banner/config';
 import { FC, memo } from 'react';
 
 const Banner: FC = () => {
-  const { content, title } = BannerContent;
+  const { content, title } = bannerData;
 
   return (
     <div className='banner'>

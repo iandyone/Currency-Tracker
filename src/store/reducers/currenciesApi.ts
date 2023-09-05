@@ -1,5 +1,5 @@
+import { ICurrencyParams, ICurrencyResponce, IGetCurrenciesParams } from '@appTypes/index';
 import { CurrenciesList } from '@constants/enums';
-import { ICurrencyParams, ICurrencyResponce, IGetCurrenciesParams } from '@constants/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const currencyApiKey = process.env.REACT_APP_CURRENCY_API_KEY;

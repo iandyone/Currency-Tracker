@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { routes } from '@constants/routes';
-import { useSelectorTyped } from '@utils/hooks/redux-hooks';
+import { useSelectorTyped } from '@hooks/reduxHooks';
 import { FC, lazy, memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 

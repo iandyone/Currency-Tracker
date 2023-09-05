@@ -1,8 +1,9 @@
 import './index.scss';
 
+import { ICurrencyParams } from '@appTypes/index';
 import { ISelectProps, ISelectState } from '@components/Timeline/Select/types';
 import { CurrenciesList } from '@constants/enums';
-import { ICurrencyParams } from '@constants/types';
+import { diagramObserver } from '@observers/diagram';
 import { PureComponent } from 'react';
 
 export class Select extends PureComponent<ISelectProps, ISelectState> {
@@ -25,6 +26,7 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
   handlerOnClickOption = (name: string) => () => {
     this.setState((state) => ({ ...state, showMenu: false }));
     this.props.handlerOnClick(name);
+    diagramObserver.notify(false);
   };
 
   render() {

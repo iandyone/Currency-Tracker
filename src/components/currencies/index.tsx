@@ -1,32 +1,34 @@
 import './index.scss';
 
-import CurrencyCard from '@components/Currencies/CurrencyCard';
+import { ICosts } from '@appTypes/index';
+import { CurrencyCard } from '@components/Currencies/CurrencyCard';
+import { Modal } from '@components/Currencies/Modal';
 import { Spinner } from '@components/Loader';
-import { Modal } from '@components/Modal';
-import UpdateTime from '@components/Update-time';
+import { UpdateTime } from '@components/UpdateTime';
 import { CurrenciesList } from '@constants/enums';
-import { ICosts } from '@constants/types';
-import { setModal } from '@store/reducers/app-reducer';
-import { useGetCurrenciesCostsQuery, useGetCurrenciesDataQuery } from '@store/reducers/currencies-api';
+import { useDispatchTyped, useSelectorTyped } from '@hooks/reduxHooks';
+import { setModal, useGetCurrenciesCostsQuery, useGetCurrenciesDataQuery } from '@store/reducers';
+import { saveCurrenciesData } from '@utils/helpers/cashCurrenciesData';
+import { getCurrenciesList } from '@utils/helpers/getCurrenciesList';
 import { getSkipConditions } from '@utils/helpers/getFetchSkipConditions';
-import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { togglePageScroll } from '@utils/helpers/togglePageScroll';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 export const Currencies: FC = () => {
-  const currenciesList = useRef(Object.keys(CurrenciesList).join(','));
-  const skipConditions = useRef(getSkipConditions());
+  const currenciesList = useMemo(getCurrenciesList, []);
+  const skipConditions = useMemo(getSkipConditions, []);
 
   const { currenciesDataSkip, currensiesPricesSkip } = getSkipConditions();
   const { modal } = useSelectorTyped((store) => store.app);
   const dispatch = useDispatchTyped();
 
   const { data: currenciesData, isFetching: isFetchingData } = useGetCurrenciesDataQuery(
-    { currencies: currenciesList.current },
-    { skip: skipConditions.current.currenciesDataSkip },
+    { currencies: currenciesList },
+    { skip: skipConditions.currenciesDataSkip },
   );
   const { data: currenciesPrice, isFetching: isFetchingPrices } = useGetCurrenciesCostsQuery(
-    { currencies: currenciesList.current },
-    { skip: skipConditions.current.currensiesPricesSkip },
+    { currencies: currenciesList },
+    { skip: skipConditions.currensiesPricesSkip },
   );
 
   const [currencies, setCurrencies] = useState(getInitialCurrencies);
@@ -48,21 +50,18 @@ export const Currencies: FC = () => {
     (currency: string) => {
       setModalCurrency(currency as CurrenciesList);
       dispatch(setModal(true));
+      togglePageScroll(false);
     },
     [dispatch],
   );
 
   useEffect(() => {
     if (currenciesPrice) {
-      const updateDate = new Date(currenciesPrice.meta.last_updated_at).getTime();
       const costs: ICosts = {
         [CurrenciesList.BYN]: currenciesPrice.data,
       };
 
-      localStorage.setItem('currenciesPrice', JSON.stringify(currenciesPrice));
-      localStorage.setItem('update', String(updateDate));
-      localStorage.setItem('costs', JSON.stringify(costs));
-
+      saveCurrenciesData(currenciesPrice, costs);
       setPrices(currenciesPrice);
     }
 

@@ -1,5 +1,5 @@
+import { Theme } from '@appTypes/index';
 import { CurrenciesList } from '@constants/enums';
-import { Theme } from '@constants/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IAppSLiceState {
@@ -28,7 +28,6 @@ const appSlice = createSlice({
 
     setModal(state, action: PayloadAction<boolean>) {
       state.modal = action.payload;
-      document.body.style.overflow = action.payload ? 'hidden' : 'auto';
     },
   },
 });

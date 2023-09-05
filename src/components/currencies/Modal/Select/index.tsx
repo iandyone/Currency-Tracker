@@ -1,9 +1,9 @@
 import './index.scss';
 
-import { Option } from '@components/Modal/Option';
+import { Option } from '@components/Currencies/Modal/Option';
 import { CurrenciesList } from '@constants/enums';
-import { setCurrentCurrency } from '@store/reducers/app-reducer';
-import { useDispatchTyped, useSelectorTyped } from '@utils/hooks/redux-hooks';
+import { useDispatchTyped, useSelectorTyped } from '@hooks/reduxHooks';
+import { setCurrentCurrency } from '@store/reducers/appReducer';
 import { FC, useCallback, useState } from 'react';
 
 export const Select: FC = () => {

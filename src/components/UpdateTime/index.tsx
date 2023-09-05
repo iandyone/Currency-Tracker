@@ -2,7 +2,7 @@ import './index.scss';
 
 import { FC, memo, useState } from 'react';
 
-const UpdateTime: FC = () => {
+const UpdateTimeComponent: FC = () => {
   const [updateTime] = useState(getUpdateTime);
 
   function getUpdateTime() {
@@ -21,4 +21,4 @@ const UpdateTime: FC = () => {
   );
 };
 
-export default memo(UpdateTime);
+export const UpdateTime = memo(UpdateTimeComponent);

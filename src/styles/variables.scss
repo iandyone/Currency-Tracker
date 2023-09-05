@@ -1,5 +1,28 @@
 :root {
-  --Poppins: 'Poppins';
+  --font-main: 'Poppins';
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+
+  --fz-small: 10px;
+  --fz-medium-small: 12px;
+  --fz-medium: 14px;
+  --fz-medium-large: 16px;
+  --fz-large: 18px;
+  --fz-x-large: 20px;
+  --fz-xx-large: 22px;
+  --fz-heading-small: 24px;
+  --fz-heading-medium: 26px;
+  --fz-heading-large: 28px;
+  --fz-heading-x-large: 30px;
+  --fz-heading-xx-large: 32px;
+  --fz-jumbo: 38px;
+  --fz-super-jumbo: 40px;
+  --fz-heroic: 54px;
+  --fz-legendary: 76px;
+
   --black: #030304;
   --black2: #202025;
   --black3: #1b2028;
@@ -12,8 +35,6 @@
   --green5: #024720;
   --red2: #ff5044;
 
-  --transition: all 0.3s ease;
-  --buttonPressedTransform: scale(0.95);
   --gray: #898989;
   --gray2: #607d94;
   --gray3: #474747;
@@ -23,6 +44,9 @@
   --red: #452534;
   --blue: #142e67;
   --blue2: #1d324b;
+
+  --transition: all 0.3s ease;
+  --buttonPressedTransform: scale(0.95);
 
   --text-gradient: linear-gradient(92deg, #00ce2c 0%, #aedf23 49.26%, #a3dc00 100%);
 

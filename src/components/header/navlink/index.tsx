@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { INavLink } from '@constants/types';
+import { INavLink } from '@appTypes/index';
 import { FC } from 'react';
 import { NavLink as Link } from 'react-router-dom';
 
