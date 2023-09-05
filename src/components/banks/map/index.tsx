@@ -2,7 +2,7 @@ import './index.scss';
 
 import { IMapProps } from '@components/Banks/Map/types';
 import { BankMaps } from '@constants/enums';
-import { checkBanksWithCurrencies } from '@utils/helpers/check-banks-with-currenciess';
+import { checkBanksWithCurrencies } from '@utils/helpers/checkBanksWithCurrenciess';
 import mapboxgl from 'mapbox-gl';
 import { createRef, PureComponent } from 'react';
 

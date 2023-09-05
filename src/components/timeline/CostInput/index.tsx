@@ -13,8 +13,8 @@ export class CostInput extends Component<ICostInputProps, ICostInputState> {
     const value = e.target.value;
     if (value.length > 5) return;
 
-    const cost = Number(value);
-    const maxCostValue = 15;
+    const cost = Number.parseFloat(value);
+    const maxCostValue = 30;
 
     const isValueWrong = !cost || Math.abs(cost) > maxCostValue;
     const error = isValueWrong ? 'Wrong value' : null;

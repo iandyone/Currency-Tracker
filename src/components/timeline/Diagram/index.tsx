@@ -1,4 +1,5 @@
-import { IGraphProps } from '@components/Diagram/types';
+import { IGraphProps } from '@components/Timeline/Diagram/types';
+import { transformArrayToDiagramData } from '@utils/helpers/transformArrayToDiagramData';
 import {
   Align,
   BarElement,
@@ -17,7 +18,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 export class Diagram extends PureComponent<IGraphProps, object> {
   private values: number[] = Object.values(this.props.costs);
   private days: string[] = new Array(this.props.period).fill(0).map((_, index) => String(`Day ${index + 1}`));
-  private costs: string[] = this.values.map(String);
+  private costs = transformArrayToDiagramData(this.values);
 
   constructor(props: IGraphProps) {
     super(props);
@@ -44,8 +45,8 @@ export class Diagram extends PureComponent<IGraphProps, object> {
         },
       },
       y: {
-        max: 16,
-        min: -16,
+        max: 31,
+        min: -31,
         title: {
           display: true,
           text: 'VALUE',
@@ -72,7 +73,8 @@ export class Diagram extends PureComponent<IGraphProps, object> {
         backgroundColor: '#16C782',
         categoryPercentage: 1.1,
         borderColor: 'red',
-        borderWidth: 3,
+        borderWidth: 1,
+        stacked: true,
       },
     ],
   };

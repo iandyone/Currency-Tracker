@@ -1,8 +1,8 @@
 import './index.scss';
 
-import { Diagram } from '@components/Diagram';
 import Portal from '@components/Portal';
 import { CostInput } from '@components/Timeline/CostInput';
+import { Diagram } from '@components/Timeline/Diagram';
 import { Select } from '@components/Timeline/Select';
 import UpdateTime from '@components/Update-time';
 import { ICurrencyGraphState } from '@constants/types';
