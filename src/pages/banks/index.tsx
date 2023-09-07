@@ -14,4 +14,4 @@ const BanksPage: FC = () => {
   );
 };
 
-export default withSection(BanksPage, 'card', 'card-page');
+export default withSection(BanksPage, 'card', 'bank-page');

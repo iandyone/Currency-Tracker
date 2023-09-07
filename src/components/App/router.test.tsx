@@ -21,7 +21,7 @@ describe('Router tests', () => {
 
     pagesList.forEach(({ name }) => {
       const linkName = name.split(' ');
-      const testId = linkName[linkName.length - 1].toLowerCase() + '-route';
+      const testId = linkName[0].toLowerCase() + '-route';
       const route = screen.getByTestId(testId);
 
       expect(route).toBeInTheDocument();

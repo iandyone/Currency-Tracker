@@ -82,15 +82,12 @@ describe('test', () => {
 
     await userEvent.type(inputs[inputs.length - 1], String(1));
 
-    screen.debug();
-
     const diagramCompleatedModal = screen.getByTestId('diagram-created-modal');
     expect(diagramCompleatedModal).toBeInTheDocument();
 
     const showDiagramButton = screen.getByTestId('timeline-button');
     expect(showDiagramButton).toBeInTheDocument();
 
-    screen.debug();
     fireEvent.click(showDiagramButton);
     const diagram = screen.getByTestId('diagram');
     expect(diagram).toBeInTheDocument();
