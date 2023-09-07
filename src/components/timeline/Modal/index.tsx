@@ -15,7 +15,9 @@ export class Modal extends PureComponent<IModalProps, object> {
 
     return (
       <Portal id='diagram-modal'>
-        <div className={`diagram-modal ${showGraphButton && 'active'}`}>{text}</div>
+        <div className={`diagram-modal ${showGraphButton && 'active'}`} data-testid='diagram-created-modal'>
+          {text}
+        </div>
       </Portal>
     );
   }

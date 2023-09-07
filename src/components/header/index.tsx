@@ -1,21 +1,13 @@
 import './index.scss';
 
-import { INavLink } from '@appTypes/index';
 import Logo from '@assets/icons/logo.webp';
 import { NavLink } from '@components/Header/Navlink';
 import { ThemeButton } from '@components/ThemeButton';
-import { Routes } from '@constants/enums';
-import { FC } from 'react';
+import { pagesList } from '@constants/routes';
+import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Header: FC = () => {
-  const pagesList: INavLink[] = [
-    { name: 'Home', route: Routes.MAIN },
-    { name: 'Timeline', route: Routes.TIMELINE },
-    { name: 'Bank card', route: Routes.BANKS },
-    { name: 'Contacts', route: Routes.CONTACTS },
-  ];
-
+const HeaderComponent: FC = () => {
   return (
     <header className='header'>
       <div className='header__container container'>
@@ -23,6 +15,7 @@ export const Header: FC = () => {
           <Link to='/' className='header__logo'>
             <img src={Logo} alt='header-logo' />
           </Link>
+          ``
           <ul className='header__links'>
             {pagesList.map((pageLink) => (
               <NavLink {...pageLink} key={pageLink.name} />
@@ -34,3 +27,5 @@ export const Header: FC = () => {
     </header>
   );
 };
+
+export const Header = memo(HeaderComponent);

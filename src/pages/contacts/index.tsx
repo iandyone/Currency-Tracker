@@ -14,4 +14,4 @@ const ContactsPage: FC = () => {
   );
 };
 
-export default withSection(ContactsPage, 'contacts', 'contacts-page');
+export default withSection(ContactsPage, 'contacts-page', 'contacts-page');

@@ -12,11 +12,14 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
     this.state = { currencies: [], showMenu: false };
   }
 
-  componentDidMount(): void {
-    const currenciesData: ICurrencyParams = JSON.parse(localStorage.getItem('currenciesData'));
-    const currencies = Object.keys(CurrenciesList).map((item) => currenciesData.data[item].name);
+  componentDidMount() {
+    const currenciesData: ICurrencyParams =
+      JSON.parse(localStorage.getItem('currenciesData')) ?? this.props.data;
 
-    this.setState((state) => ({ ...state, currencies }));
+    if (currenciesData) {
+      const currencies = Object.keys(CurrenciesList).map((item) => currenciesData.data[item].name);
+      this.setState((state) => ({ ...state, currencies }));
+    }
   }
 
   handlerOnClickTitle = () => {
@@ -34,11 +37,11 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
 
     return (
       <>
-        <div className='current' data-testid='timeline-select'>
+        <div className='current' data-testid='timeline-select' /* onClick={this.handlerOnClickTitle} */>
           <div
             className={`current__title ${showMenu && 'active'}`}
-            onClick={this.handlerOnClickTitle}
-            data-testid='timeline-currency'>
+            data-testid='timeline-currency'
+            onClick={this.handlerOnClickTitle}>
             {this.props.option}
           </div>
           <ul className='current__options'>

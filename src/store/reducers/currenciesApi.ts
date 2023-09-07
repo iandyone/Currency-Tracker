@@ -1,14 +1,13 @@
 import { ICurrencyParams, ICurrencyResponce, IGetCurrenciesParams } from '@appTypes/index';
+import { axiosBaseQuery } from '@config/axios';
 import { CurrenciesList } from '@constants/enums';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 
 const currencyApiKey = process.env.REACT_APP_CURRENCY_API_KEY;
 
 export const currenciesApi = createApi({
   reducerPath: 'currenciesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.currencyapi.com/v3',
-  }),
+  baseQuery: axiosBaseQuery,
   endpoints: (build) => ({
     getCurrenciesCosts: build.query<ICurrencyResponce, IGetCurrenciesParams>({
       query: ({ currencies, base }) => ({

@@ -16,10 +16,14 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const dispatch = store.dispatch;
 
-export class Timeline extends Component<object, ICurrencyGraphState> {
+interface ITimelineProps {
+  showInputs?: boolean;
+}
+
+export class Timeline extends Component<ITimelineProps, ICurrencyGraphState> {
   private defaultOption = 'Choose the currency';
 
-  constructor(props: object) {
+  constructor(props: ITimelineProps) {
     super(props);
     this.state = {
       option: this.defaultOption,
@@ -94,7 +98,7 @@ export class Timeline extends Component<object, ICurrencyGraphState> {
           <div className='graph'>
             <Select handlerOnClick={this.resetState} option={option} />
             <div className='cost__body'>
-              {showInputs && (
+              {(showInputs || this.props.showInputs) && (
                 <div className='cost__content'>
                   {inputItems.map((_, index) => (
                     <CostInput id={index + 1} key={index} setCost={this.setCost} />

@@ -1,5 +1,5 @@
 describe('Routing test', () => {
-  const routes = ['timeline', 'card', 'contacts'];
+  const routes = ['timeline', 'bank', 'contacts'];
 
   it('should open a home page fisrt', () => {
     cy.visit('http://localhost:5000');

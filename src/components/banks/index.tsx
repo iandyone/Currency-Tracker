@@ -26,7 +26,7 @@ export class Banks extends Component<object, IBanksState> {
         <UpdateTime />
         <h1 className='banks__title'>{title}</h1>
         <Search className='banks__input' handlerOnClick={this.handlerOnClickOption} />
-        <Map currency={currency} />
+        <Map currency={currency} />F
       </div>
     );
   }

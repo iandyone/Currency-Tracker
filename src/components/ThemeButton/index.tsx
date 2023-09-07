@@ -22,8 +22,8 @@ export const ThemeButton: FC<IThemeButtonProps> = ({ className }) => {
 
   return (
     <div className={className} onClick={handlerOnClick} data-testid='theme-button'>
-      <div className={classNames.switcher}>
-        <div className={classNames.toggler}></div>
+      <div className={classNames.switcher} data-testid='theme-switcher'>
+        <div className={classNames.toggler} data-testid='theme-toggler'></div>
       </div>
     </div>
   );
