@@ -1,0 +1,17 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.error {
+  @extend %flexColumn;
+  min-height: 100vh;
+  row-gap: 20px;
+  color: var(--black2);
+
+  &__title {
+    font-size: var(--fz-heading-small);
+  }
+
+  &__text {
+    font-size: var(--fz-x-large);
+  }
+}

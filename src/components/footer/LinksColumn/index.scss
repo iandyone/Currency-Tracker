@@ -1,0 +1,90 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+$fzM: 20px;
+
+.navigation {
+  flex: 1 1 auto;
+  display: flex;
+  column-gap: 30px;
+  justify-content: space-between;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  &__column {
+    @media (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      padding: 15px 0px;
+      border-bottom: 1px solid var(--gray2);
+
+      &.active {
+        .navigation__links {
+          height: 70px;
+        }
+
+        .navigation__title {
+          &:before {
+            transform: rotate(180deg);
+            transition: var(--transition);
+          }
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-size: var(--fz-heading-large);
+    font-weight: var(--fw-normal);
+    line-height: 150%;
+    color: var(--footer-title);
+    transition: var(--transition);
+    margin-bottom: 40px;
+
+    @media (max-width: 600px) {
+      font-size: $fzM;
+      font-weight: var(--fw-normal);
+      letter-spacing: -0.24px;
+      margin-bottom: 0px;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        background: url('@assets/icons/arrow.svg') right center no-repeat;
+        transition: var(--transition);
+      }
+    }
+  }
+
+  &__links {
+    @extend %flexColumn;
+    font-size: var(--fz-heading-small);
+    font-weight: var(--fw-normal);
+    row-gap: 18px;
+    color: var(--footer-links);
+    transition: height 0.3s ease;
+
+    @media (max-width: 600px) {
+      height: 0px;
+      overflow: hidden;
+    }
+  }
+
+  &__link {
+    & a {
+      @extend %buttonHover;
+      @extend %buttonActive;
+
+      @media (max-width: 600px) {
+        font-size: $fzM;
+      }
+    }
+  }
+}

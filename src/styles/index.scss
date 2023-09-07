@@ -1,0 +1,24 @@
+@import './nullstyle.scss';
+@import './variables.scss';
+@import './templates.scss';
+
+.container {
+  max-width: 1400px;
+  margin: 0px auto;
+  box-sizing: content-box;
+
+  @extend %pagePagging;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--white2);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--green);
+  border-radius: 8px;
+}

@@ -1,0 +1,16 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.option {
+  border-bottom: 1px solid var(--gray2);
+  padding: 10px 0px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  &:hover {
+    transition: var(--transition);
+    @extend %buttonHover;
+  }
+}

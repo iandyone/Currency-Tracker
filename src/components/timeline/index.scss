@@ -1,0 +1,14 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.timeline {
+  @extend %pageContent;
+
+  &__container {
+    @extend %flexColumn;
+  }
+}
+
+.graph {
+  @extend %flexColumn;
+}

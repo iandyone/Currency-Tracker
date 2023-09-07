@@ -1,0 +1,7 @@
+@import '@styles/templates.scss';
+
+.timeline-page {
+  &__content {
+    @extend %flexColumn;
+  }
+}

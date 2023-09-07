@@ -1,0 +1,13 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.option {
+  padding: 10px 0px 10px 10px;
+  color: var(--banks-text);
+  @extend %buttonHover;
+  @extend %buttonActive;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--gray2);
+  }
+}

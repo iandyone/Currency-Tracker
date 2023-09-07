@@ -1,0 +1,53 @@
+@import './variables.scss';
+
+%pagePagging {
+  padding: 0 25px;
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
+}
+
+%buttonHover {
+  transition: var(--transition);
+
+  &:hover {
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0.6;
+  }
+}
+
+%buttonActive {
+  transition: var(--transition);
+
+  &:active {
+    transition: var(--transition);
+    transform: var(--buttonPressedTransform);
+  }
+}
+
+%gradientText {
+  color: transparent;
+  background: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+%pageContent {
+  padding: 65px 0px;
+
+  @media (max-width: 992px) {
+    padding: 40px 0px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 0px;
+  }
+}
+
+%flexColumn {
+  display: flex;
+  flex-direction: column;
+}

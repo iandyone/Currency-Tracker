@@ -1,0 +1,63 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.cost {
+  @extend %flexColumn;
+  row-gap: 10px;
+
+  &__title {
+    color: var(--timeline-cost-text);
+    transition: var(--transition);
+
+    &.active {
+      color: var(--red2);
+      transition: var(--transition);
+    }
+  }
+
+  &__body {
+    @extend %flexColumn;
+    row-gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 30px;
+    background-color: var(--timeline-select-bg);
+    color: var(--timeline-select-text);
+    padding-left: 10px;
+    transition: var(--transition);
+
+    &.active {
+      border: 1px solid var(--red2);
+      transition: var(--transition);
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__button {
+    height: 60px;
+    width: 300px;
+    align-self: center;
+    background: var(--green);
+    color: var(--white);
+
+    @extend %buttonHover;
+    @extend %buttonActive;
+  }
+}

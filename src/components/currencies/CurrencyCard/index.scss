@@ -1,0 +1,118 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.currency {
+  display: flex;
+  width: 100%;
+  padding: 30px 32px 30px 32px;
+  align-items: center;
+  gap: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--currency-card-border);
+  background: var(--currency-card-bg);
+  transition: var(--transition);
+  @extend %buttonHover;
+  @extend %buttonActive;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 1100px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    max-width: none;
+  }
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fz-heading-x-large);
+
+    @media (max-width: 1100px) {
+      width: 50px;
+      height: 50px;
+      font-size: var(--fz-large);
+    }
+
+    @media (max-width: 768px) {
+      width: 30px;
+      height: 30px;
+      font-size: var(--fz-medium-small);
+    }
+  }
+
+  &__content {
+    @extend %flexColumn;
+    row-gap: 5px;
+  }
+
+  &__title {
+    color: var(--currency-card-title);
+    font-size: 35px;
+    font-weight: var(--fw-normal);
+    line-height: 141%;
+    transition: var(--transition);
+
+    @media (max-width: 1100px) {
+      font-size: var(--fz-medium-large);
+    }
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-medium);
+    }
+  }
+
+  &__price {
+    color: var(--currency-card-cost);
+    transition: var(--transition);
+    font-size: var(--fz-heading-xx-large);
+    font-weight: var(--fw-light);
+    line-height: 128%;
+
+    @media (max-width: 1100px) {
+      font-size: var(--fz-medium-large);
+    }
+
+    @media (max-width: 768px) {
+      font-size: var(--fz-medium-small);
+    }
+  }
+
+  &-1 {
+    background: var(--currency-symbol-bg-1);
+  }
+  &-2 {
+    background: var(--currency-symbol-bg-2);
+  }
+  &-3 {
+    background: var(--currency-symbol-bg-3);
+  }
+  &-4 {
+    background: var(--currency-symbol-bg-4);
+  }
+  &-5 {
+    background: var(--currency-symbol-bg-5);
+  }
+  &-6 {
+    background: var(--currency-symbol-bg-6);
+  }
+  &-7 {
+    background: var(--currency-symbol-bg-7);
+  }
+  &-8 {
+    background: var(--currency-symbol-bg-8);
+  }
+  &-9 {
+    background: var(--currency-symbol-bg-9);
+  }
+  &-10 {
+    background: var(--currency-symbol-bg-10);
+  }
+}

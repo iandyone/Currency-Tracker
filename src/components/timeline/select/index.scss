@@ -1,0 +1,67 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.current {
+  font-size: var(--fz-heading-small);
+  width: 100%;
+  max-width: 300px;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  &__title {
+    font-weight: var(--fw-medium);
+    color: var(--timeline-cost-text);
+    transition: var(--transition);
+    position: relative;
+    padding-left: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 30%;
+      height: 20px;
+      width: 20px;
+      background: url('@assets/icons/arrow.svg') right center no-repeat;
+      transition: var(--transition);
+    }
+
+    &.active::before {
+      transform: rotate(180deg);
+      transition: var(--transition);
+    }
+
+    @media (max-width: 480px) {
+      font-size: var(--fz-x-large);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--banks-bg);
+    color: var(--banks-text);
+    transition: var(--transition);
+    overflow: auto;
+    z-index: 150;
+  }
+
+  &__option {
+    font-size: var(--fz-large);
+    padding: 5px 10px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--gray2);
+    }
+
+    &:hover {
+      transition: var(--transition);
+      @extend %buttonHover;
+    }
+  }
+}

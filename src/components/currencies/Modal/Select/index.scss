@@ -1,0 +1,50 @@
+@import '@styles/variables.scss';
+@import '@styles/templates.scss';
+
+.select {
+  &__current {
+    @extend %flexColumn;
+    padding: 15px 0px;
+    border-bottom: 1px solid var(--gray2);
+    position: relative;
+    width: 100%;
+    padding-left: 10px;
+    transition: var(--transition);
+
+    &:hover {
+      transition: var(--transition);
+      @extend %buttonHover;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      height: 20px;
+      width: 20px;
+      background: url('@assets/icons/arrow.svg') right center no-repeat;
+      transition: var(--transition);
+    }
+
+    &.active::before {
+      transform: rotate(180deg);
+      transition: var(--transition);
+    }
+  }
+
+  &__menu {
+    @extend %flexColumn;
+    background: #333;
+    color: white;
+    max-height: 230px;
+    overflow: auto;
+    height: 0px;
+    transition: var(--transition);
+    padding: 0px 10px 0px 10px;
+
+    &.active {
+      height: 230px;
+      transition: var(--transition);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+import './index.scss';
+
+import { FC, memo, useState } from 'react';
+
+const UpdateTimeComponent: FC = () => {
+  const [updateTime] = useState(getUpdateTime);
+
+  function getUpdateTime() {
+    const updateTime = new Date(Number(localStorage.getItem('update')));
+    const hours = updateTime.getHours();
+    const minutes = updateTime.getMinutes();
+
+    return `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+  }
+
+  return (
+    <div className='time'>
+      Last updated at {updateTime}
+      {new Date().getHours() > 12 ? 'pm' : 'am'}
+    </div>
+  );
+};
+
+export const UpdateTime = memo(UpdateTimeComponent);
