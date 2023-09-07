@@ -3,8 +3,8 @@
 
 .banks {
   @extend %flexColumn;
+  @extend %pageContent;
   align-items: center;
-  padding: 20px;
 
   &__title {
     color: var(--banks-title);

@@ -39,7 +39,7 @@ export class Map extends PureComponent<IMapProps, object> {
   render() {
     return (
       <div className='map'>
-        <div ref={this.mapContainer} className='map__container' />
+        <div ref={this.mapContainer} className='map__container container' />
       </div>
     );
   }
