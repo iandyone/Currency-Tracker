@@ -1,13 +1,12 @@
 import './index.scss';
 
+import Layout from '@components/Layout';
 import { routes } from '@constants/routes';
 import { useSelectorTyped } from '@hooks/reduxHooks';
-import { FC, lazy, memo, Suspense } from 'react';
+import { FC, memo, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Loader from './Loader';
-
-const Layout = lazy(() => import('@components/Layout'));
 
 const App: FC = () => {
   const { theme } = useSelectorTyped((store) => store.app);

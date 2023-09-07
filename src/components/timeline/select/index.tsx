@@ -14,9 +14,11 @@ export class Select extends PureComponent<ISelectProps, ISelectState> {
 
   componentDidMount(): void {
     const currenciesData: ICurrencyParams = JSON.parse(localStorage.getItem('currenciesData'));
-    const currencies = Object.keys(CurrenciesList).map((item) => currenciesData.data[item].name);
 
-    this.setState((state) => ({ ...state, currencies }));
+    if (currenciesData) {
+      const currencies = Object.keys(CurrenciesList).map((item) => currenciesData.data[item].name);
+      this.setState((state) => ({ ...state, currencies }));
+    }
   }
 
   handlerOnClickTitle = () => {

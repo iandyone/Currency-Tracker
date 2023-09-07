@@ -23,6 +23,7 @@ export default {
     '^@hooks/(.*)': '<rootDir>src/hooks/$1',
     '^@store/(.*)': '<rootDir>src/store/$1',
     '^@reducers/(.*)': '<rootDir>src/store/reducers/$1',
+    '^@observers/(.*)': '<rootDir>src/observers/$1',
     '^@pages/(.*)': '<rootDir>src/pages/$1',
     '^@config/(.*)': '<rootDir>config/$1',
   },
